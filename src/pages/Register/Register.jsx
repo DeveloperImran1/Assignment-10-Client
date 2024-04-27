@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
 
 
 const Register = () => {
-    const { register, signInGoogle, signInGithub } = useContext(AuthContext);
+    const { register, signInGoogle, signInGithub, handleUpdateProfile } = useContext(AuthContext);
     const navigate = useNavigate()
 
     // sweet alert
@@ -32,7 +32,7 @@ const Register = () => {
             text: "Something went wrong !",
             icon: "error"
         });
-      
+
     }
 
 
@@ -47,7 +47,11 @@ const Register = () => {
 
         register(email, password)
             .then(res => {
-                console.log(res)
+                handleUpdateProfile(name, photo)
+                .then(result => {
+
+                    console.log(result)
+                })
                 successfullyRegister()
 
             })
@@ -80,7 +84,10 @@ const Register = () => {
     }
     return (
         <div className=" flex flex-col-reverse lg:flex-row justify-between overflow-x-hidden gap-[100px]">
+            <div className="flex items-center justify-center">
+                <img className="w-[100%]  h-[100%] lg:w-[500px] lg:h-[400px]  " src="https://app.svgator.com/assets/svgator.webapp/log-in-girl.svg" alt="" />
 
+            </div>
             <div className="w-full lg:ml-9 bg-base-200 max-w-md p-5 lg:p-8 space-y-3 rounded-xl border  font-sans mx-auto">
                 <h1 className="animate__animated animate__heartBeat text-3xl font-bold text-center text-indigo-600">Register</h1>
                 {/* Input fields and the form started */}
@@ -165,9 +172,7 @@ const Register = () => {
                 </p>
             </div>
 
-            <div>
-                <img className="w-full" src="https://brandio.io/envato/hostify/html/images/graphic1.png" alt="" />
-            </div>
+
         </div>
     );
 };

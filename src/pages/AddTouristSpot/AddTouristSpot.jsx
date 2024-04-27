@@ -1,15 +1,36 @@
-import { useContext } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AddTouristSpot = () => {
     const { loading, user } = useContext(AuthContext);
+
+    // for slider
+    const [currentSlider, setCurrentSlider] = useState(0);
+    // The slider images array
+    const sliderImages = ['https://source.unsplash.com/500x500/?nature/?1', 'https://source.unsplash.com/500x500/?nature/?3', 'https://source.unsplash.com/500x500/?nature/?5', 'https://source.unsplash.com/500x500/?nature/?2', 'https://source.unsplash.com/500x500/?nature/?4'];
+    const prevSlider = () => {
+        setCurrentSlider((currentSlider) => (currentSlider === 0 ? sliderImages.length - 1 : currentSlider - 1));
+    };
+    const nextSlider = useCallback(() => {
+        setCurrentSlider((currentSlider) => (currentSlider === sliderImages.length - 1 ? 0 : currentSlider + 1));
+    }, [sliderImages.length]);
+
+    // if you don't want to change the slider automatically then you can just remove the useEffect
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            nextSlider();
+        }, 3000);
+        return () => clearInterval(intervalId);
+    }, [nextSlider, currentSlider]);
+
+
     if (loading) {
         return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
 
     }
     const currentUserEmail = user.email;
     const currentUserName = user.displayName;
-    console.log(currentUserEmail, currentUserName )
+    console.log(currentUserEmail, currentUserName)
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -26,7 +47,9 @@ const AddTouristSpot = () => {
         const shortDescription = form.shortDescription.value;
         const travel_time = form.travel_time.value;
 
-        const newTouristSpot = { name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time };
+        const photoURLAuthor = user.photoURL;
+
+        const newTouristSpot = {photoURLAuthor, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time };
         console.log(newTouristSpot)
 
         fetch("http://localhost:5000/addTouristSpot", {
@@ -41,95 +64,87 @@ const AddTouristSpot = () => {
                 console.log(data)
             })
     }
+
+
+
+
     return (
         <div>
 
+            <div className="w-full p-8  rounded-xl border bg-white   font-sans mx-auto">
+                <h1 className="text-3xl font-bold text-center text-black mb-3 ">Add Tourist Spot</h1>
+                <p className="text-center text-black" > Wellcome Our Touris spot website. You Can Add More Tourist Spots of few information. Folow the form</p>
 
 
-            <div className="w-full max-w-md p-8 space-y-3 rounded-xl border bg-white   font-sans mx-auto">
-                <h1 className="text-3xl font-bold text-center text-indigo-600">Login</h1>
-                {/* Input fields and the form started */}
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input value={currentUserName} className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="name" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Name
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input value={currentUserEmail} className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="email" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Email
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="image" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Image
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="tourists_spot_name" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Tourists Spot Name
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="average_cost" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Average Cost
-
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="seasonality" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Seasonality
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="travel_time" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Travel Time
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="totalVisitorsPerYear" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Total Visitors Per Year
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="country_Name" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Country Name
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="location" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Location
-                        </label>
-                    </div>
-                    <div className="relative w-[100%] rounded-[10px]">
-                        <input className="peer rounded-[10px] w-full h-[50px] border-b border-[#1B8EF8] bg-blue-100 px-2 pt-4 text-[#1B8EF8] focus:outline-none dark:bg-blue-500/20" type="text" id="navigate_ui_input_55" name="shortDescription" placeholder="" />
-                        <label className="absolute w-full rounded-[10px] left-2 top-0.5 text-xs text-[#1B8EF8] duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-[#1B8EF8]" htmlFor="navigate_ui_input_55">
-                            Short Description
-                        </label>
+                <div className="flex justify-between items-start mt-[50px] " >
+                    <div className="relative  w-[48%]">
+                        {/* arrow left */}
+                        <button onClick={prevSlider} className="absolute -left-6 top-1/2 flex h-6 w-6 items-center justify-center md:h-8 md:w-8"><svg viewBox="0 0 1024 1024" className="icon h-4 w-4 md:h-6 md:w-6" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#0095FF" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg></button>
+                        {/* arrow right */}
+                        <button onClick={nextSlider} className="absolute -right-6 top-1/2 flex h-6 w-6 items-center justify-center md:h-8 md:w-8"><svg viewBox="0 0 1024 1024" className="icon h-4 w-4 md:h-6 md:w-6" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(180)"><g strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#0095FF" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg></button>
+                        <div className="w-full  overflow-hidden">
+                            {/* slider container */}
+                            <div className="flex transform-gpu duration-500 ease-linear" style={{ transform: `translateX(-${currentSlider * 100}%)` }}>
+                                {/* sliders */}
+                                {sliderImages.map((slide, inx) => (
+                                    <img width={400} height={400} key={inx} src={slide} className="mx-[2.5%] h-full min-w-[95%] rounded-2xl border-8 border-transparent object-cover" alt={`Slider - ${inx + 1}`} />
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Sign in Button */}
-                    <button className="text-lg rounded-xl relative p-[10px] block w-full bg-indigo-600 text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500 z-50 group">
-                        Add Now
-                        <span className="absolute opacity-0 group-hover:opacity-100 duration-100 group-hover:duration-1000 ease-out flex justify-center inset-0 items-center z-10 text-white">
-                            Let&apos;s go
-                        </span>
-                        <span className="bg-indigo-800 absolute inset-0 -translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
-                        <span className="bg-indigo-800 absolute inset-0 translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
-                        <span className="bg-indigo-800 absolute inset-0 translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
-                        <span className="bg-indigo-800 absolute inset-0 -translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
-                    </button>
-                </form>
+
+                    <form onSubmit={handleSubmit} className="space-y-6 text-[#1B8EF8] " >
+
+                        <input name="tourists_spot_name" placeholder="Tourists Spot Name" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                        <input name="image" placeholder="Image" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                        <div className="flex gap-3 justify-between" >
+                            <input name="average_cost" placeholder="Average Cost" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                            <input name="travel_time" placeholder="Travel Time 7 Days" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+
+                        </div>
+                        <div className="flex  gap-3 justify-between" >
+                            <input name="totalVisitorsPerYear" placeholder="Total Visitor Per Year" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                            <input name="location" placeholder="Location" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                        </div>
+                        <div className="flex gap-3 justify-between" >
+
+                            <select name="country_Name" className="select select-info w-full max-w-xs  ">
+                                <option disabled selected>Conutry Name</option>
+                                <option className="mb-2" >Bangladesh</option>
+                                <option className="mb-2" >Thailand</option>
+                                <option className="mb-2" >Indonesia</option>
+                                <option className="mb-2" >Malaysia</option>
+                                <option className="mb-2" >Vietnam</option>
+                                <option className="mb-2" >Cambodia</option>
+
+                            </select>
+                            <select name="seasonality" className="select select-info w-full max-w-xs  ">
+                                <option disabled selected>Seasonality</option>
+                                <option className="mb-2" >Summer</option>
+                                <option className="mb-2" >Winter</option>
+                            </select>
+                        </div>
+                        <div className="flex gap-3 justify-between" >
+
+                            <input name="name" value={currentUserName} placeholder="Name" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                            <input name="email" value={currentUserEmail} placeholder="Email" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+
+                        </div>
+                        <textarea name="shortDescription" placeholder="Short Description" className="w-full textarea textarea-info" ></textarea>
+
+                        <button className="text-lg rounded-xl relative p-[10px] block w-full bg-indigo-600 text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500 z-50 group">
+                            Add Now
+                            <span className="absolute opacity-0 group-hover:opacity-100 duration-100 group-hover:duration-1000 ease-out flex justify-center inset-0 items-center z-10 text-white">
+                                Let&apos;s go
+                            </span>
+                            <span className="bg-indigo-800 absolute inset-0 -translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
+                            <span className="bg-indigo-800 absolute inset-0 translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
+                            <span className="bg-indigo-800 absolute inset-0 translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
+                            <span className="bg-indigo-800 absolute inset-0 -translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
+                        </button>
+                    </form>
+                </div>
 
 
             </div>
@@ -139,3 +154,6 @@ const AddTouristSpot = () => {
 };
 
 export default AddTouristSpot;
+
+
+
