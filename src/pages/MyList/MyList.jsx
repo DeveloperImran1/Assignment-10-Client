@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const MyList = () => {
@@ -35,7 +36,7 @@ const MyList = () => {
 
     }
 
-  console.log(mySpots)
+    console.log(mySpots)
     console.log(loading)
     if (loading) {
         return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
@@ -57,7 +58,7 @@ const MyList = () => {
                                     <div className="text-lg font-semibold">{spot.tourists_spot_name}</div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <button className="rounded-md border border-black px-4 dark:border-white dark:hover:text-slate-800 dark:hover:bg-white  py-2  duration-300 hover:bg-gray-200">Update</button>
+                                    <Link to={`/myList/${spot._id}`} > <button className="rounded-md border border-black px-4 dark:border-white dark:hover:text-slate-800 dark:hover:bg-white  py-2  duration-300 hover:bg-gray-200">Update</button></Link>
                                     <button onClick={() => handleDelete(spot._id)} className="rounded-md border border-black px-4 dark:border-white dark:hover:text-slate-800 dark:hover:bg-white  py-2  duration-300 hover:bg-gray-200">Delete</button>
                                 </div>
                             </div>

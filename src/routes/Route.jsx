@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import AddTouristSpot from "../pages/AddTouristSpot/AddTouristSpot";
 import AllTouristSpot from "../pages/AllTouristSpot/AllTouristSpot";
 import MyList from "../pages/MyList/MyList";
+import TouristSpotUpdate from "../pages/TouristSpotUpdate/TouristSpotUpdate";
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
             {
                 path: "/myList",
                 element: <MyList></MyList>
+            },
+            {
+                path: "/myList/:id",
+                element: <TouristSpotUpdate></TouristSpotUpdate>,
+                loader: ({params}) => fetch(`http://localhost:5000/touristSpot/${params.id}`)
             },
         ]
     },
