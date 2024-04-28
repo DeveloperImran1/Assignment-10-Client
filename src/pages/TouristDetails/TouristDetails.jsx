@@ -10,7 +10,7 @@ const TouristDetails = () => {
     const { loading } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/touristSpot/${id}`)
+        fetch(`https://assignment-ten-server-side-indol.vercel.app/touristSpot/${id}`)
             .then(res => res.json())
             .then(data => {
                 setTourist(data)

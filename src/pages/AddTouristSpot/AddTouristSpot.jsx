@@ -79,7 +79,7 @@ const AddTouristSpot = () => {
         }
      
 
-        fetch("http://localhost:5000/addTouristSpot", {
+        fetch("https://assignment-ten-server-side-indol.vercel.app/addTouristSpot", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

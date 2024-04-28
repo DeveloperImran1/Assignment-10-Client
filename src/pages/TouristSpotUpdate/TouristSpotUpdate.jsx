@@ -44,7 +44,7 @@ const TouristSpotUpdate = () => {
         const UpdateInfo = {U_name, U_email, U_image, U_tourists_spot_name, U_average_cost, U_seasonality, U_totalVisitorsPerYear, U_country_Name, U_location, U_shortDescription, U_travel_time};
         console.log(UpdateInfo)
 
-        fetch(`http://localhost:5000/touristSpot/${_id}`, {
+        fetch(`https://assignment-ten-server-side-indol.vercel.app/touristSpot/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

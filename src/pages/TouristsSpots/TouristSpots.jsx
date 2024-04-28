@@ -11,7 +11,7 @@ const TouristSpots = () => {
     // }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allTouristSpot`)
+        fetch(`https://assignment-ten-server-side-indol.vercel.app/allTouristSpot`)
             .then(res => res.json())
             .then(data => {
                 setTourists(data)

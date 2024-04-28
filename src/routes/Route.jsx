@@ -9,12 +9,14 @@ import TouristSpotUpdate from "../pages/TouristSpotUpdate/TouristSpotUpdate";
 import TouristDetails from "../pages/TouristDetails/TouristDetails";
 import Home from "../pages/Home/Home";
 import SameCountries from "../pages/Countries/SameCountries";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
             {
                 path: "/allTouristSpot",
                 element: <AllTouristSpot></AllTouristSpot>,
-                loader: ()=> fetch("http://localhost:5000/allTouristSpot")
+                loader: ()=> fetch("https://assignment-ten-server-side-indol.vercel.app/allTouristSpot")
             },
             {
                 path: "/myList",
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
             {
                 path: "/myList/:id",
                 element: <TouristSpotUpdate></TouristSpotUpdate>,
-                loader: ({params}) => fetch(`http://localhost:5000/touristSpot/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-ten-server-side-indol.vercel.app/touristSpot/${params.id}`)
             },
             {
                 path: "/touristSpot/:id",
@@ -53,7 +55,7 @@ const router = createBrowserRouter([
             {
                 path: "/country/:id",
                 element: <SameCountries></SameCountries>,
-                loader: ({params}) => fetch(`http://localhost:5000/countriesCollection/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-ten-server-side-indol.vercel.app/countriesCollection/${params.id}`)
             },
         ]
     },

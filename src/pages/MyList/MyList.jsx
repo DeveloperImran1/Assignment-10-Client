@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import swal from 'sweetalert';
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 
 const MyList = () => {
@@ -14,7 +16,7 @@ const MyList = () => {
     console.log(currentUserEmail)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myAddedList/${currentUserEmail}`)
+        fetch(`https://assignment-ten-server-side-indol.vercel.app/myAddedList/${currentUserEmail}`)
             .then(res => res.json())
             .then(data => {
                 setMySpots(data)
@@ -32,7 +34,7 @@ const MyList = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/myAddedList/${_id}`, {
+                    fetch(`https://assignment-ten-server-side-indol.vercel.app/myAddedList/${_id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -66,27 +68,59 @@ const MyList = () => {
     return (
         <div>
             <h1>My added List </h1>
-            <div className="grid grid-cols-3" >
-                {
-                    mySpots.map(spot =>
-                        <div key={spot._id}>
-                            <div className="mx-auto max-w-[350px] space-y-4 rounded-lg bg-white p-6 shadow-lg md:w-[350px] dark:bg-[#18181B]">
-                                <img width={200} height={200} className="h-[275px] w-[350px] rounded-lg object-cover" src={spot.image} alt="card navigate ui" />
-                                <div className="grid gap-2">
-                                    <h1 className="text-lg font-semibold ">{spot.country_Name}</h1>
-                                    <p className="text-sm text-gray-500 dark:text-white/60">{spot.email}</p>
-                                    <div className="text-lg font-semibold">{spot.tourists_spot_name}</div>
-                                </div>
-                                <div className="flex gap-4">
-                                    <Link to={`/myList/${spot._id}`} > <button className="rounded-md border border-black px-4 dark:border-white dark:hover:text-slate-800 dark:hover:bg-white  py-2  duration-300 hover:bg-gray-200">Update</button></Link>
-                                    <button onClick={() => handleDelete(spot._id)} className="rounded-md border border-black px-4 dark:border-white dark:hover:text-slate-800 dark:hover:bg-white  py-2  duration-300 hover:bg-gray-200">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    )
+          
+
+            <div className="overflow-x-auto border w-full mx-auto bg-[#1313180D] rounded-xl border-black  ">
+                <table className="min-w-full text-[16px] font-semibold ">
+                    <thead className="dark:bg-gray-300 bg-slate-600 mt-10">
+                        <tr className="text-left text-[#131318]">
+                            <th></th>
+                            <th className="p-3">Tourist </th>
+                            <th className="p-3">Time</th>
+                            <th className="p-3">country</th>
+                            <th className="p-3">Average Cost</th>
+                            <th className="p-3">Update</th>
+                            <th className="p-3">Delete</th>
+
+                        </tr>
+                    </thead>
+                    {
+                        mySpots.map((ld, i) => <tbody key={ld._id}>
+                            <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+                                <th>{i + 1}</th>
+                                <td className="p-3">
+                                    <p>{ld.tourists_spot_name}</p>
+                                </td>
+
+                                <td className="p-3">
+                                    <p>{ld.tourists_spot_name}</p>
+
+                                </td>
+                                <td className="p-3">
+                                    <p>{ld.tourists_spot_name}</p>
+
+                                </td>
+                                <td className="p-3">
+                                    <p>{ld.average_cost}</p>
+
+                                </td>
+                                <td className="">
+                                    <Link>
+                                    <button className="btn btn-sm ml-2 bg-[#FF5400]"><FaRegEdit /></button>
+                                </Link>
+                            </td>
+                            <td className="">
+                                <button onClick={() => handleDelete(ld._id)} className="btn btn-sm ml-2 btn-warning"> <MdDeleteForever /></button>
+                            </td>
+                        </tr>
+                    </tbody> )
                 }
-            </div>
+
+            </table>
         </div>
+
+
+        </div >
     );
 };
 
