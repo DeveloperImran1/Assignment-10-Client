@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 // react  icon
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from 'sweetalert2'
 
@@ -15,6 +15,9 @@ import Swal from 'sweetalert2'
 const Register = () => {
     const { register, signInGoogle, signInGithub, handleUpdateProfile } = useContext(AuthContext);
     const navigate = useNavigate()
+
+    const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(true);
 
     // sweet alert
     const successfullyRegister = () => {
@@ -45,14 +48,31 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, email, photo, password)
 
+        // Validation form
+        if(!name.length || !email.length || !password.length || !photo.length ){
+            return setErrorMessage("Empty Field is Not Alowed")
+        }
+        setErrorMessage("")
+        // password validation
+        if (password.length < 6) {
+            return setErrorMessage("Password Should have Atleast 6 charecter !")
+        }
+        if (!/[A-Z]/.test(password)) {
+            return setErrorMessage("Password Should have Atleast 1 Uppercase !")
+        }
+        if (!/[a-z]/.test(password)) {
+            return setErrorMessage("Password Should have Atleast 1 Lowercase !")
+        }
+
+
         register(email, password)
             .then(res => {
                 handleUpdateProfile(name, photo)
                 .then(result => {
 
                     console.log(result)
+                    successfullyRegister()
                 })
-                successfullyRegister()
 
             })
             .catch(err => {
@@ -126,16 +146,16 @@ const Register = () => {
                             <label htmlFor="password" >
                                 Password
                             </label>
-                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring  " />
+            
 
                         </div>
                         <div className="relative">
-                            {/* <input type={`${showPassword ? 'password' : 'text'}`} name="password" id="password"  placeholder="Password" className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring  " /> */}
-                            {/* <div className="absolute top-3 right-3 " onClick={() => setShowPassword(!showPassword)}>
+                            <input type={`${showPassword ? 'password' : 'text'}`} name="password" id="password"  placeholder="Password" className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring  " />
+                            <div className="absolute top-3 right-3 " onClick={() => setShowPassword(!showPassword)}>
                             {showPassword ? <FaEyeSlash size="20" ></FaEyeSlash> : <FaEye size="20"></FaEye>}
-                        </div> */}
                         </div>
-
+                        </div>
+                        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
                     </div>
                     {/* Sign in Button */}
                     <button className="text-lg rounded-xl relative p-[10px] block w-full bg-indigo-600 text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500 z-50 group">
@@ -149,6 +169,7 @@ const Register = () => {
                         <span className="bg-indigo-800 absolute inset-0 -translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
                     </button>
                 </form>
+
                 <div className="flex items-center pt-4 space-x-2">
                     <div className="flex-1 h-px bg-gray-300"></div>
                     <p className="text-sm text-gray-600">Sign In with social accounts</p>

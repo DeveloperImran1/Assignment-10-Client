@@ -7,7 +7,10 @@ import Swal from 'sweetalert2'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 
+// react tostify
+import toast from "react-hot-toast";
 
+  
 
 
 
@@ -16,6 +19,7 @@ const Navbar = () => {
     const [dropDownState, setDropDownState] = useState(false);
     const dropDownMenuRef = useRef();
     const { user, logOut } = useContext(AuthContext)
+    const error = () => toast.error("Please Before Login !");
     console.log(user)
     const navigate = useNavigate()
 
@@ -43,13 +47,13 @@ const Navbar = () => {
         document.querySelector('html').setAttribute('data-theme', theme ? "light" : "dark");
     }, [theme]); // Re-run effect when theme changes
 
-    const successfullyRegister = () => {
+    const successfullyLogOut = () => {
         Swal.fire({
             title: "Good job!",
-            text: "You Successfully Registerd !",
+            text: "You Successfully Log Out !",
             icon: "success"
         });
-        navigate("/")
+        navigate("/login")
     }
     useEffect(() => {
         const closeDropDown = (e) => {
@@ -66,12 +70,18 @@ const Navbar = () => {
     }, []);
 
     const handleLogout = () => {
-        logOut()
+        if(user){
+            logOut()
             .then(res => {
-                successfullyRegister()
-                navigate("/login")
+                successfullyLogOut()
+                
             })
             .catch(err => console.log(err))
+
+        }
+        else{
+             error()
+        }
 
     }
     return (
@@ -157,7 +167,7 @@ const Navbar = () => {
                                 data-tooltip-content={user.displayName}
                                 data-tooltip-place="top"
                                 className="relative group">
-                                <img className="size-[55px]  bg-slate-500 object-cover rounded-full" src="https://source.unsplash.com/300x300/?profile" alt="avatar navigate ui" />
+                                <img className="size-[55px]  bg-slate-500 object-cover rounded-full" src= { user.photoURL || "https://source.unsplash.com/300x300/?profile" } alt="avatar navigate ui" />
                                 <span className="size-4 bg-blue-500 absolute rounded-full bottom-2 right-0 border-[3px] border-white"></span>
                                 <Tooltip id="my-tooltip" />
                             </div>

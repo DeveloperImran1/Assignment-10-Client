@@ -11,7 +11,7 @@ const TouristSpotUpdate = () => {
     const successfullyUpdated = () => {
         Swal.fire({
             title: "Good job!",
-            text: "You Successfully Updated !",
+            text: "Your Post Successfully Updated !",
             icon: "success"
         });
      

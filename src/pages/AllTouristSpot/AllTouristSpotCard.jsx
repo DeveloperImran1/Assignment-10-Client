@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const AllTouristSpotCard = ({ spot }) => {
     const { _id, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time, photoURLAuthor } = spot;
-    console.log(spot)
+    // console.log(spot)
     return (
         <div>
         
@@ -33,7 +33,7 @@ const AllTouristSpotCard = ({ spot }) => {
                 <div className="mt-3 space-y-2 px-4">
                     <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90">{tourists_spot_name || "Place Not Found" }</h2>
                     <div className="flex justify-between items-center text-md text-gray-700 dark:text-white/50" >
-                        <p><span  className=" text-black">Average Cost:</span> {average_cost || 10000} </p>
+                        <p><span  className=" text-black">Average Cost:</span> {average_cost} </p>
                         <p><span  className=" text-black">Seasonality:</span> {seasonality || ""} </p>
                     </div>
                     <p className="text-gray-700 dark:text-white/50" ><span className=" text-black" >Total Visitor Per Year:</span> {totalVisitorsPerYear || 868} </p>

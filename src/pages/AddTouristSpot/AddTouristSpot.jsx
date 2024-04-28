@@ -1,9 +1,18 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
+// react tostify
+import toast from "react-hot-toast";
+
+ // alert message 
+ const errorMessage = ()=> toast.error("Empty field is Not Alowed")
 
 const AddTouristSpot = () => {
     const { loading, user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
+   
     // for slider
     const [currentSlider, setCurrentSlider] = useState(0);
     // The slider images array
@@ -23,14 +32,25 @@ const AddTouristSpot = () => {
         return () => clearInterval(intervalId);
     }, [nextSlider, currentSlider]);
 
+   
 
     if (loading) {
         return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
 
     }
-    const currentUserEmail = user.email;
-    const currentUserName = user.displayName;
-    console.log(currentUserEmail, currentUserName)
+    const currentUserEmail = user?.email;
+    const currentUserName = user?.displayName;
+   
+
+    // sweet alert
+    const successfullyPost = () => {
+        Swal.fire({
+            title: "Good job!",
+            text: "You Successfully Post !",
+            icon: "success"
+        });
+
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -49,8 +69,15 @@ const AddTouristSpot = () => {
 
         const photoURLAuthor = user.photoURL;
 
-        const newTouristSpot = {photoURLAuthor, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time };
+        const newTouristSpot = { photoURLAuthor, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time };
         console.log(newTouristSpot)
+
+
+        // Validation form
+        if (!tourists_spot_name.length || !image.length || !average_cost.length || !country_Name.length || !photoURLAuthor.length || !name.length || !email.length ) {
+            return errorMessage();
+        }
+     
 
         fetch("http://localhost:5000/addTouristSpot", {
             method: "POST",
@@ -61,7 +88,12 @@ const AddTouristSpot = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.acknowledged) {
+                    successfullyPost()
+                    console.log(data)
+                    form.reset()
+                }
+
             })
     }
 
@@ -99,8 +131,8 @@ const AddTouristSpot = () => {
                         <input name="tourists_spot_name" placeholder="Tourists Spot Name" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
                         <input name="image" placeholder="Image" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
                         <div className="flex gap-3 justify-between" >
-                            <input name="average_cost" placeholder="Average Cost" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
-                            <input name="travel_time" placeholder="Travel Time 7 Days" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
+                            <input name="average_cost" placeholder="Average Cost" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="number" />
+                            <input name="travel_time" placeholder="Travel Time 7 Days" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="number" />
 
                         </div>
                         <div className="flex  gap-3 justify-between" >

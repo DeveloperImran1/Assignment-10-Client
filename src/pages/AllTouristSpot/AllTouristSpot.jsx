@@ -56,12 +56,14 @@ const AllTouristSpot = () => {
     console.log(allTouristSpots)
     // handle  sort
     const highToLow = () => {
+        console.log("before", allTouristSpots)
         const sorting = allTouristSpots.sort((a, b) => b.average_cost - a.average_cost);
         setAllTouristSpots(sorting)
+        console.log("after", allTouristSpots)
 
     }
     const lowToHigh = () => {
-        const sorting = allTouristSpots.sort((a, b) => b.average_cost - a.average_cost);
+        const sorting = allTouristSpots.sort((a, b) => a.average_cost - b.average_cost);
         setAllTouristSpots(sorting)
 
     }
@@ -75,15 +77,15 @@ const AllTouristSpot = () => {
 
                 <div className="w-full  h-60 sm:h-96 md:h-[500px] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear rounded-3xl"
                     style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}>
-                    {/* text container here */}
-                    <div className="drop-shadow-lg text-white text-center rounded-3xl">
+
+                    <div className="drop-shadow-lg text-white text-center rounded-3xl flex flex-col items-center">
                         <h1 className="text-xl lg:text-3xl font-semibold mb-3">{sliders[currentSlider].title}</h1>
-                        <p className="text-sm md:text-base lg:text-lg">{sliders[currentSlider].des}</p>
+                        <p className="text-sm md:text-base lg:text-lg w-[70%] mt-[40px] ">{sliders[currentSlider].des}</p>
                     </div>
                 </div>
-                {/* slider container */}
+
                 <div className="flex justify-center items-center gap-3 p-2">
-                    {/* sliders */}
+
                     {sliders.map((slide, inx) => (
                         <img onClick={() => setCurrentSlider(inx)} key={inx}
                             src={slide.img} className={`w-10 md:w-20 h-6 sm:h-8 md:h-12 bg-black/20 ${currentSlider === inx ? 'border-2 border-black p-px' : ''} rounded-md md:rounded-lg box-content cursor-pointer`}
@@ -91,32 +93,31 @@ const AllTouristSpot = () => {
                     ))}
                 </div>
 
+                <div className="absolute left-[60px] -bottom-[90px] " >
+                    <div ref={dropDownRef} className="relative mx-auto w-fit text-white bg-[#23BE0A] mb-[130px] mt-[20px] lg:-mt-[100px] rounded-lg">
+                        <button onClick={() => setOpen((prev) => !prev)} className=" bg-[#23BE0A] px-6 py-2 flex gap-1 items-center justify-center font-bold rounded-lg"> <span>Sort By</span> <IoIosArrowDown size={30}></IoIosArrowDown> </button>
+                        <ul className={`${open ? 'visible' : 'invisible'} absolute top-12 z-50 w-full space-y-1 rounded-sm shadow-md`}>
+
+
+
+                            <Link onClick={highToLow} >
+                                <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
+                                >High</li>
+                            </Link>
+
+                            <Link onClick={lowToHigh} >
+                                <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
+                                >Low</li>
+                            </Link>
+
+
+
+                        </ul>
+                    </div>
+                </div>
             </div>
-            {/* <select className="select  w-[180px] absolute -bottom-[90px] left-[150px]">
-                <option disabled selected>Budget Sort Now</option>
-                <option > <button  onClick={sortLowToHigh}>Low</button> </option>
-                <option onClick={sortHighToLow} >High</option>
-            </select> */}
-            <div ref={dropDownRef} className="relative mx-auto w-fit text-white bg-[#23BE0A] mb-[130px] mt-[20px] lg:-mt-[100px] rounded-lg">
-                <button onClick={() => setOpen((prev) => !prev)} className=" bg-[#23BE0A] px-6 py-2 flex gap-1 items-center justify-center font-bold rounded-lg"> <span>Sort By</span> <IoIosArrowDown size={30}></IoIosArrowDown> </button>
-                <ul className={`${open ? 'visible' : 'invisible'} absolute top-12 z-50 w-full space-y-1 rounded-sm shadow-md`}>
 
 
-
-                    <Link onClick={highToLow} >
-                        <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
-                        >Rating  </li>
-                    </Link>
-
-                    <Link onClick={lowToHigh} >
-                        <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
-                        >Number of pages </li>
-                    </Link>
-
-
-
-                </ul>
-            </div>
 
             <div className="grid grid-cols-3">
                 {
