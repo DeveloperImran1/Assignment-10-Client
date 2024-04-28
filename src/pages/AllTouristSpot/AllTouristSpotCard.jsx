@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 
 const AllTouristSpotCard = ({ spot }) => {
-    const { name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time, photoURLAuthor } = spot;
+    const { _id, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time, photoURLAuthor } = spot;
     console.log(spot)
     return (
         <div>
         
 
-            <div className=" mx-auto my-6 max-w-[350px] rounded-lg bg-white font-sans shadow-lg dark:bg-[#18181B]">
+            <div className=" mx-auto my-6 max-w-[350px]  bg-white font-sans shadow-lg dark:bg-[#18181B]    group transition border-2 rounded-xl  border-sky-500 hover:border-[#23BE0A] border-opacity-30 hover:no-underline focus:no-underline">
                 <div className="flex items-center justify-between gap-10 px-4 py-4">
                     {/* Avatar image  */}
                     <div className="flex items-center gap-3">
@@ -24,8 +25,8 @@ const AllTouristSpotCard = ({ spot }) => {
                     </div>
                 </div>
                 {/* Post Image */}
-                <div className="flex flex-col gap-1">
-                    <div className="w-full "><img width={400} height={400} className="h-[350px] rounded-md w-full bg-black/40" src={image || "https://i.ibb.co/dPSQVRJ/404.jpg"} alt="card navigate ui" /></div>
+                <div className="flex flex-col  gap-1">
+                    <div className="w-full "><img width={400} height={400}  src={image || "https://i.ibb.co/dPSQVRJ/404.jpg"} alt="card navigate ui" className="h-[350px] p-[18px] rounded-[24px] w-full transition hover:scale-105"/></div>
 
                 </div>
                 {/* Post content */}
@@ -36,7 +37,7 @@ const AllTouristSpotCard = ({ spot }) => {
                         <p><span  className=" text-black">Seasonality:</span> {seasonality || ""} </p>
                     </div>
                     <p className="text-gray-700 dark:text-white/50" ><span className=" text-black" >Total Visitor Per Year:</span> {totalVisitorsPerYear || 868} </p>
-                    <h2 className="text-sm text-gray-500 dark:text-white/50">{shortDescription.slice(0, 60)} ...{' '}<span className="cursor-pointer text-md text-[#3e96d4]">View Details</span></h2>
+                    <h2 className="text-sm text-gray-500 dark:text-white/50">{shortDescription.slice(0, 60)} ...{' '}<Link to={`/touristSpot/${_id}`} className="cursor-pointer text-md text-[#3e96d4]">View Details</Link></h2>
                 </div>
                 {/* icons */}
                 <div className="mt-4 flex justify-between px-4 pb-4">

@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import "../../../src/App.css"
+import "../../../src/index.css"
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -20,7 +20,7 @@ const Banner = () => {
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
     return (
-        <div className='rounded-[24px] h-[600px]' >
+        <div className='rounded-[28px] h-[600px]' >
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -37,19 +37,19 @@ const Banner = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img className='w-full h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
+                    <img className='w-full rounded-3xl h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
+                    <img className='w-full rounded-3xl h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
+                    <img className='w-full h-full rounded-3xl' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
+                    <img className='w-full h-full rounded-3xl' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
+                    <img className='w-full h-full rounded-3xl' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />
                 </SwiperSlide>
               
                 <div className="autoplay-progress" slot="container-end">

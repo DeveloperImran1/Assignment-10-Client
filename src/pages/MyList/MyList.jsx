@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 
 
 const MyList = () => {
@@ -22,16 +23,35 @@ const MyList = () => {
 
     // delete spots 
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/myAddedList/${_id}`, {
-            method: "DELETE"
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary Post!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount) {
-                    const currentSpots = mySpots.filter(spot => spot._id !== _id)
-                    setMySpots(currentSpots)
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/myAddedList/${_id}`, {
+                        method: "DELETE"
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount) {
+                                const currentSpots = mySpots.filter(spot => spot._id !== _id)
+                                setMySpots(currentSpots)
+                            }
+                        })
+
+                    swal("Success! Your imaginary Post has been deleted!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your imaginary Post is safe!");
                 }
-            })
+            });
+
+
         console.log(_id)
 
     }

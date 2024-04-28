@@ -1,67 +1,122 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import AllTouristSpotCard from "./AllTouristSpotCard";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 // Slider
 
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useEffect, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-
-import '../../../src/App.css';
-
-// import required modules
-import { EffectCards } from 'swiper/modules';
 
 
 
 const AllTouristSpot = () => {
-    const allTouristSpots = useLoaderData();
+
+    const [currentSlider, setCurrentSlider] = useState(0);
+    const sliders = [{ img: "https://source.unsplash.com/1200x540/?nature", title: "Find Your Ideal Tourist Spot", des: "Explore rich cultures, stunning landscapes, and historic sites. Start your journey today and unlock unforgettable experiences around the globe.", }, { img: "https://source.unsplash.com/1200x540/?hill", title: "Find Your Ideal Tourist Spot", des: "Explore rich cultures, stunning landscapes, and historic sites. Start your journey today and unlock unforgettable experiences around the globe.", }, { img: "https://source.unsplash.com/1200x540/?mountain", title: "Find Your Ideal Tourist Spot", des: "Explore rich cultures, stunning landscapes, and historic sites. Start your journey today and unlock unforgettable experiences around the globe.", }, { img: "https://source.unsplash.com/1200x540/?river", title: "Find Your Ideal Tourist Spot", des: "Explore rich cultures, stunning landscapes, and historic sites. Start your journey today and unlock unforgettable experiences around the globe.", }, { img: "https://source.unsplash.com/1200x540/?sea", title: "Find Your Ideal Tourist Spot", des: "Explore rich cultures, stunning landscapes, and historic sites. Start your journey today and unlock unforgettable experiences around the globe.", },];
+    // if you don't want to change the slider automatically then you can just remove the useEffect
+    useEffect(() => {
+        const intervalId = setInterval(() => setCurrentSlider(currentSlider === sliders.length - 1 ? 0 : currentSlider + 1), 5000);
+        return () => clearInterval(intervalId);
+    }, [currentSlider]);
+
+    const [allTouristSpots, setAllTouristSpots] = useState([]);
+    const allTouristSpotsLoader = useLoaderData();
+
+    useEffect(() => {
+        setAllTouristSpots(allTouristSpotsLoader)
+    }, [])
+
     const { loading } = useContext(AuthContext);
-    if (loading) {
-        return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
+
+
+
+    // if (loading) {
+    //     return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
+
+    // }
+
+
+
+    // dropdown
+    const [open, setOpen] = useState(false);
+    const dropDownRef = useRef(null);
+
+    useEffect(() => {
+        const close = (e) => {
+            if (dropDownRef.current && !dropDownRef.current.contains(e.target)) {
+                setOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', close);
+        return () => document.removeEventListener('mousedown', close)
+    }, []);
+
+    console.log(allTouristSpots)
+    // handle  sort
+    const highToLow = () => {
+        const sorting = allTouristSpots.sort((a, b) => b.average_cost - a.average_cost);
+        setAllTouristSpots(sorting)
 
     }
+    const lowToHigh = () => {
+        const sorting = allTouristSpots.sort((a, b) => b.average_cost - a.average_cost);
+        setAllTouristSpots(sorting)
+
+    }
+
+
     return (
-        <div>
+        <div className="" >
 
-            <a rel="noopener noreferrer" href="#" className="flex mb-16  gap-[20%] items-center justify-between dark:bg-gray-50">
-                {/* <img src="https://source.unsplash.com/random/480x360" alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" /> */}
-                <div className="ml-[65px]" >
-                    <Swiper
-                        effect={'cards'}
-                        grabCursor={true}
-                        modules={[EffectCards]}
-                        className="mySwiper"
-                    >
-                        <div className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
+            <div className=" mb-16 p-7 rounded-3xl relative ">
 
-                            {
-                                allTouristSpots.map(spot =>
-                                    <div key={spot._id} >
-                                        <SwiperSlide>
-                                            <img src={spot.image || "https://i.ibb.co/dPSQVRJ/404.jpg"}alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
 
-                                        </SwiperSlide>
-                                    </div>
-                                )
-                            }
-
-                        </div>
-                 
-                    </Swiper>
+                <div className="w-full  h-60 sm:h-96 md:h-[500px] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear rounded-3xl"
+                    style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}>
+                    {/* text container here */}
+                    <div className="drop-shadow-lg text-white text-center rounded-3xl">
+                        <h1 className="text-xl lg:text-3xl font-semibold mb-3">{sliders[currentSlider].title}</h1>
+                        <p className="text-sm md:text-base lg:text-lg">{sliders[currentSlider].des}</p>
+                    </div>
                 </div>
-                <div className="p-6 space-y-2 lg:col-span-5">
-                    <h3 className="text-2xl mb-5 font-semibold sm:text-4xl group-hover:underline group-focus:underline">Find Your Ideal Tourist Spot</h3>
-                    <p> Explore rich cultures, stunning landscapes, and historic sites. Start your journey today and unlock unforgettable experiences around the globe.</p>
+                {/* slider container */}
+                <div className="flex justify-center items-center gap-3 p-2">
+                    {/* sliders */}
+                    {sliders.map((slide, inx) => (
+                        <img onClick={() => setCurrentSlider(inx)} key={inx}
+                            src={slide.img} className={`w-10 md:w-20 h-6 sm:h-8 md:h-12 bg-black/20 ${currentSlider === inx ? 'border-2 border-black p-px' : ''} rounded-md md:rounded-lg box-content cursor-pointer`}
+                            alt={slide.title} />
+                    ))}
                 </div>
-            </a>
 
+            </div>
+            {/* <select className="select  w-[180px] absolute -bottom-[90px] left-[150px]">
+                <option disabled selected>Budget Sort Now</option>
+                <option > <button  onClick={sortLowToHigh}>Low</button> </option>
+                <option onClick={sortHighToLow} >High</option>
+            </select> */}
+            <div ref={dropDownRef} className="relative mx-auto w-fit text-white bg-[#23BE0A] mb-[130px] mt-[20px] lg:-mt-[100px] rounded-lg">
+                <button onClick={() => setOpen((prev) => !prev)} className=" bg-[#23BE0A] px-6 py-2 flex gap-1 items-center justify-center font-bold rounded-lg"> <span>Sort By</span> <IoIosArrowDown size={30}></IoIosArrowDown> </button>
+                <ul className={`${open ? 'visible' : 'invisible'} absolute top-12 z-50 w-full space-y-1 rounded-sm shadow-md`}>
+
+
+
+                    <Link onClick={highToLow} >
+                        <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
+                        >Rating  </li>
+                    </Link>
+
+                    <Link onClick={lowToHigh} >
+                        <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
+                        >Number of pages </li>
+                    </Link>
+
+
+
+                </ul>
+            </div>
 
             <div className="grid grid-cols-3">
                 {
