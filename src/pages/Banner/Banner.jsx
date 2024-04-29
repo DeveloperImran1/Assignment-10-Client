@@ -20,7 +20,7 @@ const Banner = () => {
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
     return (
-        <div className='rounded-[28px] h-[600px]' >
+        <div className='rounded-[28px] h-[400px] lg:h-[600px] bg-white ' >
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -34,7 +34,7 @@ const Banner = () => {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 onAutoplayTimeLeft={onAutoplayTimeLeft}
-                className="mySwiper"
+                className="mySwiper rounded-[28px]"
             >
                 <SwiperSlide>
                     <img className='w-full rounded-3xl h-full' src="https://bootstrapmade.com/demo/templates/PhotoFolio/assets/img/gallery/gallery-14.jpg" alt="" />

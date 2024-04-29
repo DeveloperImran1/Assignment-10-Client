@@ -6,9 +6,9 @@ const CountryCard = ({ country, index }) => {
     console.log("index number: ", index, country)
     return (
         <div>
-
-            <div className="h-[500px] w-[100%] bg-no-repeat bg-cover rounded-2xl relative " style={{ backgroundImage: ` url(${image})` }} >
-                <div className={`w-[45%] h-[343px] p-[45px] bg-[#FFFFFFCC] rounded-2xl absolute ${index % 2 === 0 ? 'top-[80px] right-[70px]' : 'top-[80px] left-[70px]'}`} >
+            <Link to={`/country/${country_Name}`} >
+            <div className="h-[400px] lg:h-[500px] w-[100%] bg-no-repeat bg-cover rounded-2xl relative " style={{ backgroundImage: ` url(${image})` }} >
+                <div className={` w-[95%] lg:w-[45%] h-[300px] lg:h-[343px] p-[15px] lg:p-[45px] bg-[#FFFFFFCC] rounded-2xl absolute ${index % 2 === 0 ? 'bottom-0 lg:top-[80px] sm:left-[3%] lg:left-[50%]' : ' bottom-0 lg:top-[80px] left-[2%] lg:left-[70px]'}`} >
 
                     <div className="flex gap-[18pxpx] items-center justify-between " >
                         <div className="flex gap-2 justify-center items-center" >
@@ -30,7 +30,9 @@ const CountryCard = ({ country, index }) => {
                                 <path id="Vector" d="M5.25 3.75C5.25 2.75 5.64 1.8 6.34 1.09C7.05 0.39 8 0 9 0C9.99 0 10.94 0.39 11.65 1.09C12.35 1.8 12.75 2.75 12.75 3.75C12.75 4.74 12.35 5.69 11.65 6.4C10.94 7.1 9.99 7.5 9 7.5C8 7.5 7.05 7.1 6.34 6.4C5.64 5.69 5.25 4.74 5.25 3.75ZM12.75 6.75C12.75 5.95 13.06 5.19 13.62 4.62C14.19 4.06 14.95 3.75 15.75 3.75C16.54 3.75 17.3 4.06 17.87 4.62C18.43 5.19 18.75 5.95 18.75 6.75C18.75 7.54 18.43 8.3 17.87 8.87C17.3 9.43 16.54 9.75 15.75 9.75C14.95 9.75 14.19 9.43 13.62 8.87C13.06 8.3 12.75 7.54 12.75 6.75ZM-0.75 6.75C-0.75 5.95 -0.44 5.19 0.12 4.62C0.69 4.06 1.45 3.75 2.25 3.75C3.04 3.75 3.8 4.06 4.37 4.62C4.93 5.19 5.25 5.95 5.25 6.75C5.25 7.54 4.93 8.3 4.37 8.87C3.8 9.43 3.04 9.75 2.25 9.75C1.45 9.75 0.69 9.43 0.12 8.87C-0.44 8.3 -0.75 7.54 -0.75 6.75ZM3.31 12.11C3.91 11.16 4.76 10.37 5.75 9.82C6.75 9.28 7.86 8.99 9 9C9.94 8.99 10.88 9.19 11.75 9.58C12.62 9.97 13.39 10.53 14.03 11.24C14.66 11.95 15.14 12.78 15.43 13.69C15.72 14.59 15.81 15.55 15.7 16.49C15.69 16.61 15.65 16.72 15.59 16.82C15.52 16.92 15.43 17 15.33 17.06C13.4 18.17 11.22 18.75 9 18.75C6.69 18.75 4.53 18.13 2.66 17.06C2.56 17 2.47 16.92 2.4 16.82C2.34 16.72 2.3 16.61 2.29 16.49C2.12 14.96 2.48 13.41 3.31 12.11L3.31 12.11Z" fill="#FF5400" fill-opacity="1.000000" fill-rule="evenodd" />
                             </svg>
 
-                            <p className="text-[16px] font-normal" >{totalVisitorsPerYear || "80050"}  </p>
+                            {/* <p className="text-[16px] font-normal" >{totalVisitorsPerYear || "80050"}  </p> */}
+                            <p className="text-[16px] font-normal flex justify-center items-center" >{totalVisitorsPerYear || "80050"} <span className="hidden md:flex" > Visitor/Year</span> </p>
+
                         </div>
                         <div className="flex gap-2 justify-center items-center" >
                             <svg width="17.000000" height="20.000000" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -46,15 +48,15 @@ const CountryCard = ({ country, index }) => {
                     </div>
 
                     <h1 className="text-[24px] font-extrabold mt-[24px] mb-4 " >{tourists_spot_name}</h1>
-                    <p className="text-[#5A5A5D] w-[80%] " >{shortDescription}</p>
+                    <p className="text-[#5A5A5D] w-full lg:w-[80%] " >{shortDescription}</p>
                     <h1 className="font-extrabold text-[20px] text-[#FF5400] my-6  " >Price: {average_cost || "$13-$18"} </h1>
-                    <Link to={`/country/${country_Name}`} >
-                        <button className="bg-[#FF5400] text-white rounded-[8px] py-3 px-6 " >More Spots</button>
-                    </Link>
+
+                    <button className="bg-[#FF5400] text-white rounded-[8px] py-3 px-6 " >More Spots</button>
+
                 </div>
             </div>
-
-        </div>
+        </Link>
+        </div >
     );
 };
 

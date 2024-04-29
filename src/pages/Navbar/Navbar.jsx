@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 
 
 
-const NavBar = () => {
+const Navbar = () => {
 
     const [dropDownState, setDropDownState] = useState(false);
     const dropDownMenuRef = useRef();
@@ -97,7 +97,7 @@ const NavBar = () => {
                         <h2 className='text-[30px] font-bold hidden lg:flex ' >Travels<span className='text-[#FF5400]' >Book</span></h2>
                     </div>
                 </NavLink>
-                <ul className="hidden items-center justify-between gap-10 md:flex">
+                <ul className="hidden items-center justify-between gap-10 lg:flex">
                     <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'} >
                         <li className="group flex cursor-pointer flex-col">
                             Home<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
@@ -123,7 +123,7 @@ const NavBar = () => {
 
                 </ul>
 
-                <div ref={dropDownMenuRef} onClick={() => setDropDownState(!dropDownState)} className=" relative flex justify-center items-center gap-3 transition-transform md:hidden">
+                <div ref={dropDownMenuRef} onClick={() => setDropDownState(!dropDownState)} className=" relative flex justify-center items-center gap-3 transition-transform lg:hidden">
                     <div className='' >
                         {/* Theme switcher */}
                         <label className="swap swap-rotate">
@@ -146,7 +146,12 @@ const NavBar = () => {
                             </NavLink>
                             <NavLink to="/allTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
                                 <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                    All Tourist Spot
+                                    All Tourist Spots
+                                </li>
+                            </NavLink>
+                            <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                    Add Tourist Spot
                                 </li>
                             </NavLink>
                             <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
@@ -166,7 +171,7 @@ const NavBar = () => {
 
 
 
-                <div>
+                <div className='hidden lg:flex' >
                     {
                         user ? <div className='flex items-center justify-center gap-4'>
                             <div>
@@ -226,6 +231,6 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default Navbar;
 
 
