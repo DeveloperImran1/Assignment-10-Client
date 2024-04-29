@@ -54,7 +54,7 @@ const SameCountryCard = ({ country, index }) => {
 
                 </div>
                 <p className="text-[#5A5A5D] w-full lg:w-[80%] " >{shortDescription}</p>
-                <Link to={`/country/${country_Name}`} >
+                <Link to={`/touristSpot/${_id}`} >
                     <button className="bg-[#FF5400] text-white rounded-[8px] py-3 px-6 my-4" >View Details</button>
                 </Link>
             </div>

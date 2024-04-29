@@ -37,7 +37,7 @@ const AllTouristSpotCard = ({ spot }) => {
                         <p><span  className=" text-black">Seasonality:</span> {seasonality || ""} </p>
                     </div>
                     <p className="text-gray-700 dark:text-white/50" ><span className=" text-black" >Total Visitor Per Year:</span> {totalVisitorsPerYear || 868} </p>
-                    <h2 className="text-sm text-gray-500 dark:text-white/50">{shortDescription.slice(0, 60)} ...{' '}<Link to={`/touristSpot/${_id}`} className="cursor-pointer text-md text-[#3e96d4]">View Details</Link></h2>
+                    <h2 className="text-sm text-gray-500 dark:text-white/50">{shortDescription.slice(0, 60)} ...{' '}<Link to={`/touristSpot/${_id}`} className="cursor-pointer text-md font-bold text-[#FF5400]">View Details</Link></h2>
                 </div>
                 {/* icons */}
                 <div className="mt-4 flex justify-between px-4 pb-4">

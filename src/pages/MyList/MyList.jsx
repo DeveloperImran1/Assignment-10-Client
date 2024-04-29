@@ -105,7 +105,7 @@ const MyList = () => {
 
                                 </td>
                                 <td className="">
-                                    <Link>
+                                    <Link to={`/myList/${ld._id}`} >
                                     <button className="btn btn-sm ml-2 bg-[#FF5400]"><FaRegEdit /></button>
                                 </Link>
                             </td>

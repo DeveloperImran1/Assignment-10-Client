@@ -74,7 +74,7 @@ const AddTouristSpot = () => {
 
 
         // Validation form
-        if (!tourists_spot_name.length || !image.length || !average_cost.length || !country_Name.length || !photoURLAuthor.length || !name.length || !email.length ) {
+        if (!tourists_spot_name.length || !image.length || !average_cost.length || !country_Name.length || !photoURLAuthor.length || !name?.length || !email?.length ) {
             return errorMessage();
         }
      
@@ -108,8 +108,8 @@ const AddTouristSpot = () => {
                 <p className="text-center text-black" > Wellcome Our Touris spot website. You Can Add More Tourist Spots of few information. Folow the form</p>
 
 
-                <div className="flex justify-between items-start mt-[50px] " >
-                    <div className="relative  w-[48%]">
+                <div className="flex flex-col lg:flex-row justify-between items-start mt-[50px] gap-6  " >
+                    <div className="relative w-full lg:w-[48%]">
                         {/* arrow left */}
                         <button onClick={prevSlider} className="absolute -left-6 top-1/2 flex h-6 w-6 items-center justify-center md:h-8 md:w-8"><svg viewBox="0 0 1024 1024" className="icon h-4 w-4 md:h-6 md:w-6" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#0095FF" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg></button>
                         {/* arrow right */}

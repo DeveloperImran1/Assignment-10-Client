@@ -93,9 +93,9 @@ const AllTouristSpot = () => {
                     ))}
                 </div>
 
-                <div className="absolute left-[60px] -bottom-[90px] " >
-                    <div ref={dropDownRef} className="relative mx-auto w-fit text-white bg-[#23BE0A] mb-[130px] mt-[20px] lg:-mt-[100px] rounded-lg">
-                        <button onClick={() => setOpen((prev) => !prev)} className=" bg-[#23BE0A] px-6 py-2 flex gap-1 items-center justify-center font-bold rounded-lg"> <span>Sort By</span> <IoIosArrowDown size={30}></IoIosArrowDown> </button>
+                <div className="absolute left-[35%] lg:left-[60px] -bottom-[45%] lg:-bottom-[90px] " >
+                    <div ref={dropDownRef} className="relative mx-auto w-fit text-white bg-[#FF5400] mb-[130px] mt-[20px] lg:-mt-[100px] rounded-lg">
+                        <button onClick={() => setOpen((prev) => !prev)} className=" bg-[#FF5400] px-6 py-2 flex gap-1 items-center justify-center font-bold rounded-lg"> <span>Sort By</span> <IoIosArrowDown size={30}></IoIosArrowDown> </button>
                         <ul className={`${open ? 'visible' : 'invisible'} absolute top-12 z-50 w-full space-y-1 rounded-sm shadow-md`}>
 
 
@@ -119,7 +119,7 @@ const AllTouristSpot = () => {
 
 
 
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
                 {
                     allTouristSpots.map(spot => <AllTouristSpotCard key={spot._id} spot={spot} ></AllTouristSpotCard>)
                 }
