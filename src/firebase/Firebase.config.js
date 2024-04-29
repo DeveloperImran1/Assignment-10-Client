@@ -4,14 +4,16 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyADTAvwWdj_PMyg6KVbbVGBLHyKz6n7Tio",
-  authDomain: "assignment-10-10bbc.firebaseapp.com",
-  projectId: "assignment-10-10bbc",
-  storageBucket: "assignment-10-10bbc.appspot.com",
-  messagingSenderId: "2948646856",
-  appId: "1:2948646856:web:572d12669bf0696cabe2fd"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

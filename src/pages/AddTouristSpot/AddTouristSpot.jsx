@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
 // react tostify
 import toast from "react-hot-toast";
+import { ScaleLoader } from "react-spinners";
 
  // alert message 
  const errorMessage = ()=> toast.error("Empty field is Not Alowed")
@@ -34,10 +35,6 @@ const AddTouristSpot = () => {
 
    
 
-    if (loading) {
-        return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
-
-    }
     const currentUserEmail = user?.email;
     const currentUserName = user?.displayName;
    
@@ -97,7 +94,12 @@ const AddTouristSpot = () => {
             })
     }
 
+    if (loading) {
+        return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
+        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+      </div>
 
+    }
 
 
     return (

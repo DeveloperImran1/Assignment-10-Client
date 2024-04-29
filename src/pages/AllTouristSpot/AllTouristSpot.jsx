@@ -7,6 +7,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { ScaleLoader } from "react-spinners";
 
 
 
@@ -29,14 +30,6 @@ const AllTouristSpot = () => {
     }, [])
 
     const { loading } = useContext(AuthContext);
-
-
-
-    // if (loading) {
-    //     return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
-
-    // }
-
 
 
     // dropdown
@@ -68,7 +61,12 @@ const AllTouristSpot = () => {
 
     }
 
+    if (loading) {
+        return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
+        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+      </div>
 
+    }
     return (
         <div className="" >
 

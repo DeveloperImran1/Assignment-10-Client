@@ -1,9 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import SameCountryCard from "./SameCountryCard";
+import DataNotFound from "../ErrorPage/DataNotFound";
 
 const SameCountries = () => {
     const countries = useLoaderData();
     console.log(countries)
+
+    if(!countries.length){
+        return <DataNotFound></DataNotFound>
+    }
     return (
         <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-black mb-3 ">All Touris Spots in {countries[0]?.country_Name} </h1>

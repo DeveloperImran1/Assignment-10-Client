@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const TouristSpotUpdate = () => {
+    const { loading } = useContext(AuthContext);
     const spotData = useLoaderData();
     const { _id, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time, photoURLAuthor } = spotData;
 
@@ -64,6 +68,15 @@ const TouristSpotUpdate = () => {
                 }
             })
     }
+
+
+    if (loading) {
+        return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
+            <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+        </div>
+
+    }
+
     return (
 
         <div className="w-full p-8  rounded-xl border bg-white   font-sans mx-auto">

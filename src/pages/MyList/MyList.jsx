@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import swal from 'sweetalert';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import DataNotFound from "../ErrorPage/DataNotFound";
+import { ScaleLoader } from "react-spinners";
 
 
 const MyList = () => {
@@ -12,7 +14,7 @@ const MyList = () => {
 
 
 
-    const currentUserEmail = user?.email;
+    const currentUserEmail = user?.email || "ih9066588@gmail.com" ;
     console.log(currentUserEmail)
 
     useEffect(() => {
@@ -59,16 +61,25 @@ const MyList = () => {
     }
 
     console.log(mySpots)
-    console.log(loading)
+ 
     if (loading) {
-        return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
+        return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
+        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+      </div>
 
+    }
+    if(!mySpots.length){
+        return <DataNotFound></DataNotFound>
     }
 
     return (
         <div>
-            <h1>My added List </h1>
-          
+            <h1 className="text-xl mg:text-2xl lg:text-3xl font-bold text-center text-black mb-3 ">My added List</h1>
+
+            <div className="flex flex-col items-center justify-center" >
+                <p className="text-center text-black w-[75%] mt-3 mb-11 " >In This Section You see All Post Informaion . You Added This post. If you nedd Post Update or Delete. You do Click in Update and Delete Button.</p>
+
+            </div>
 
             <div className="overflow-x-auto border w-full mx-auto bg-[#1313180D] rounded-xl border-black  ">
                 <table className="min-w-full text-[16px] font-semibold ">
@@ -106,18 +117,18 @@ const MyList = () => {
                                 </td>
                                 <td className="">
                                     <Link to={`/myList/${ld._id}`} >
-                                    <button className="btn btn-sm ml-2 bg-[#FF5400]"><FaRegEdit /></button>
-                                </Link>
-                            </td>
-                            <td className="">
-                                <button onClick={() => handleDelete(ld._id)} className="btn btn-sm ml-2 btn-warning"> <MdDeleteForever /></button>
-                            </td>
-                        </tr>
-                    </tbody> )
-                }
+                                        <button className="btn btn-sm ml-2 bg-[#FF5400]"><FaRegEdit /></button>
+                                    </Link>
+                                </td>
+                                <td className="">
+                                    <button onClick={() => handleDelete(ld._id)} className="btn btn-sm ml-2 btn-warning"> <MdDeleteForever /></button>
+                                </td>
+                            </tr>
+                        </tbody>)
+                    }
 
-            </table>
-        </div>
+                </table>
+            </div>
 
 
         </div >
