@@ -77,7 +77,7 @@ const TouristDetails = () => {
                             </div>
 
                             {/* Description */}
-                            <div className="lg:w-[40%]" >
+                            <div className="w-full lg:w-[40%]" >
                                 <p className="text-base text-gray-500 dark:text-gray-400 my-6 w-[50%] "><span className="text-[20px] font-semibold text-black" >Description:</span> {shortDescription}  </p>
                                 <div>
                                     <MapContainer

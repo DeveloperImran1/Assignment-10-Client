@@ -159,7 +159,7 @@ const Navbar = () => {
                                 </li>
                             </NavLink>
                             {
-                                user && <>
+                                user ? <>
                                     <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
                                             Add Tourist Spot
@@ -173,6 +173,22 @@ const Navbar = () => {
                                     <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
                                             Profile
+                                        </li>
+                                    </NavLink>
+                                    <NavLink onClick={handleLogout} className={({ isActive }) => isActive ? 'text-[#ffffff] ' : ' text-white hover:bg-[#FF5400]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            Log Out
+                                        </li>
+                                    </NavLink>
+                                </> : <>
+                                    <NavLink to="/login" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            Login
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to="/register" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            Register
                                         </li>
                                     </NavLink>
                                 </>
