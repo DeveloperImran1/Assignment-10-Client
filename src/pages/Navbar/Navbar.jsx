@@ -109,21 +109,25 @@ const Navbar = () => {
                             All Tourist Spot<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
-                    <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
-                        <li className="group flex  cursor-pointer flex-col">
-                            Add Tourist Spot<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-                        </li>
-                    </NavLink>
-                    <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
-                        <li className="group flex  cursor-pointer flex-col  ">
-                            My List<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-                        </li>
-                    </NavLink>
-                    <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
-                        <li className="group flex  cursor-pointer flex-col  ">
-                            Profile<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-                        </li>
-                    </NavLink>
+                    {
+                        user && <>
+                            <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                                <li className="group flex  cursor-pointer flex-col">
+                                    Add Tourist Spot<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                </li>
+                            </NavLink>
+                            <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                                <li className="group flex  cursor-pointer flex-col  ">
+                                    My List<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                </li>
+                            </NavLink>
+                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                                <li className="group flex  cursor-pointer flex-col  ">
+                                    Profile<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                </li>
+                            </NavLink>
+                        </>
+                    }
 
 
                 </ul>
@@ -154,21 +158,25 @@ const Navbar = () => {
                                     All Tourist Spots
                                 </li>
                             </NavLink>
-                            <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
-                                <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                    Add Tourist Spot
-                                </li>
-                            </NavLink>
-                            <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
-                                <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                    My List
-                                </li>
-                            </NavLink>
-                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
-                                <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                    Profile
-                                </li>
-                            </NavLink>
+                            {
+                                user && <>
+                                    <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            Add Tourist Spot
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            My List
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            Profile
+                                        </li>
+                                    </NavLink>
+                                </>
+                            }
 
                         </ul>
 
@@ -201,10 +209,10 @@ const Navbar = () => {
                                 data-tooltip-content={user.displayName}
                                 data-tooltip-place="top"
                                 className="relative group">
-                                    <Link to="/userProfile" >
+                                <Link to="/userProfile" >
 
-                                <img className="size-[55px]  bg-slate-500 object-cover rounded-full" src={user.photoURL || "https://source.unsplash.com/300x300/?profile"} alt="avatar navigate ui" />
-                                    </Link>
+                                    <img className="size-[55px]  bg-slate-500 object-cover rounded-full" src={user.photoURL || "https://source.unsplash.com/300x300/?profile"} alt="avatar navigate ui" />
+                                </Link>
                                 <span className="size-4 bg-blue-500 absolute rounded-full bottom-2 right-0 border-[3px] border-white"></span>
                                 <Tooltip id="my-tooltip" />
                             </div>

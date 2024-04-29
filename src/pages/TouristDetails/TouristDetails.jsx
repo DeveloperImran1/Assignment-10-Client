@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ScaleLoader } from "react-spinners";
 import { Helmet } from "react-helmet-async";
+import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const TouristDetails = () => {
     const { id } = useParams();
@@ -20,11 +22,11 @@ const TouristDetails = () => {
     }, [])
     console.log(tourist)
 
-  
+
     if (loading) {
         return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
-        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
-      </div>
+            <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+        </div>
 
     }
 
@@ -33,7 +35,7 @@ const TouristDetails = () => {
     const listArray = [`Seasonality ${seasonality || "Every Time"} `, `Total Visito Pere Year ${totalVisitorsPerYear || "Lots"} `, `Travel Time ${travel_time || "Not Fixed"}`, `Location ${location}`]
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>TravelsBook || SpotDetails </title>
             </Helmet>
             <div>
@@ -75,7 +77,24 @@ const TouristDetails = () => {
                             </div>
 
                             {/* Description */}
-                            <p className="text-base text-gray-500 dark:text-gray-400 my-6 w-[50%] "><span className="text-[20px] font-semibold text-black" >Description:</span> {shortDescription}  </p>
+                            <div className="lg:w-[40%]" >
+                                <p className="text-base text-gray-500 dark:text-gray-400 my-6 w-[50%] "><span className="text-[20px] font-semibold text-black" >Description:</span> {shortDescription}  </p>
+                                <div>
+                                    <MapContainer
+                                        center={[23.7104, 90.4074]}
+                                        zoom={11}
+                                        scrollWheelZoom={true}
+                                        className="h-[25vh] md:h-[40vh] lg:h-[60vh]"
+                                    >
+                                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                                        <Marker position={[23.7104, 90.4074]}>
+                                            <Popup>
+                                                A pretty CSS3 popup. <br /> Easily customizable.
+                                            </Popup>
+                                        </Marker>
+                                    </MapContainer>
+                                </div>
+                            </div>
                         </div>
 
                         {/* author card */}
