@@ -10,6 +10,8 @@ import TouristDetails from "../pages/TouristDetails/TouristDetails";
 import Home from "../pages/Home/Home";
 import SameCountries from "../pages/Countries/SameCountries";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Profile from "../pages/Profile/Profile";
+import AuthorProfile from "../pages/Profile/AuthorProfile";
 
 
 const router = createBrowserRouter([
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
                 path: "/country/:id",
                 element: <SameCountries></SameCountries>,
                 loader: ({params}) => fetch(`https://assignment-ten-server-side-indol.vercel.app/countriesCollection/${params.id}`)
+            },
+            {
+                path: "/userProfile",
+                element: <Profile></Profile>
+            },
+            {
+                path: "/authorProfile",
+                element: <AuthorProfile></AuthorProfile>
             },
         ]
     },

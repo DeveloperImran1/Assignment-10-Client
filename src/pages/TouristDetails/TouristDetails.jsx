@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ScaleLoader } from "react-spinners";
 
 const TouristDetails = () => {
     const { id } = useParams();
@@ -18,8 +19,11 @@ const TouristDetails = () => {
     }, [])
     console.log(tourist)
 
+  
     if (loading) {
-        return <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>
+        return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
+        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+      </div>
 
     }
 

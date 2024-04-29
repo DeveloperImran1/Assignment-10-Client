@@ -119,6 +119,11 @@ const Navbar = () => {
                             My List<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
+                    <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                        <li className="group flex  cursor-pointer flex-col  ">
+                            Profile<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                        </li>
+                    </NavLink>
 
 
                 </ul>
@@ -157,6 +162,11 @@ const Navbar = () => {
                             <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
                                 <li className="group flex cursor-pointer flex-col pl-[20px]">
                                     My List
+                                </li>
+                            </NavLink>
+                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                    Profile
                                 </li>
                             </NavLink>
 
