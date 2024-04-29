@@ -6,6 +6,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import DataNotFound from "../ErrorPage/DataNotFound";
 import { ScaleLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 
 const MyList = () => {
@@ -74,6 +75,9 @@ const MyList = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>TravelsBook || MyList </title>
+            </Helmet>
             <h1 className="text-xl mg:text-2xl lg:text-3xl font-bold text-center text-black mb-3 ">My added List</h1>
 
             <div className="flex flex-col items-center justify-center" >

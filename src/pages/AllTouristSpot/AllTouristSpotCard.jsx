@@ -7,7 +7,7 @@ const AllTouristSpotCard = ({ spot }) => {
         <div>
         
 
-            <div className=" mx-auto my-6 max-w-[350px]  bg-white font-sans shadow-lg dark:bg-[#18181B]    group transition border-2 rounded-xl  border-sky-500 hover:border-[#23BE0A] border-opacity-30 hover:no-underline focus:no-underline">
+            <div className=" mx-auto my-6 max-w-[350px]  bg-white font-sans shadow-lg dark:bg-[#18181B]    group transition border-2 rounded-xl  border-sky-500 hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">
                 <div className="flex items-center justify-between gap-10 px-4 py-4">
                     {/* Avatar image  */}
                     <div className="flex items-center gap-3">

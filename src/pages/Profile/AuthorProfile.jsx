@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ScaleLoader } from "react-spinners";
 import TeamMembersCard from "./TeamMembersCard";
+import { Helmet } from "react-helmet-async";
 
 const AuthorProfile = () => {
 
@@ -21,6 +22,7 @@ const AuthorProfile = () => {
         ["Alexandra", "Frontend Developer", "https://bootstrapmade.com/demo/templates/Arsha/assets/img/team/team-1.jpg"],
         ["Tasrif", "Travel Expert", "https://bootstrapmade.com/demo/templates/Arsha/assets/img/team/team-3.jpg"],
         ["Md Roton", "UI-Ux Designer", "https://i.ibb.co/r7VB6Nt/392932956-838857447739345-3225178693452181832-n.jpg"],
+        ["Mark Davis", "SEO Expert", "https://bootstrapmade.com/demo/templates/Presento/assets/img/testimonials/testimonials-4.jpg"],
     ]
     if (loading) {
         return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
@@ -29,10 +31,13 @@ const AuthorProfile = () => {
 
     }
     return (
-        <div>
-            <div id="profile" className="flex justify-center  items-center relative  ">
+        <div className=" bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: "url('https://bootstrapmade.com/demo/templates/Arsha/assets/img/hero-img.png')" }} >
+            <Helmet>
+                <title>TravelsBook || AuthorProfile </title>
+            </Helmet>
+            <div id="profile" className="flex justify-center  items-center relative  " >
 
-                <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-[] hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">
+                <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-3 lg:space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-[] hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">
                     {/* profile image & bg  */}
                     <div className="relative">
                         <img className="w-full h-[140px] rounded-2xl bg-gray-500" src="https://i.ibb.co/ChCGg3Z/404452958-2443244652516191-5414449848808334082-n.jpg" alt="card navigate ui" />
@@ -47,7 +52,7 @@ const AuthorProfile = () => {
                         <h1 className="text-xl font-bold md:text-2xl">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ </h1>
 
                     </div>
-              
+
 
                     <div className="flex flex-wrap px-4  md:px-8 justify-between items-center">
                         {/* social icons  */}
@@ -60,10 +65,10 @@ const AuthorProfile = () => {
 
             </div>
             <div className="pt-3 mt-6 text-center space-y-1">
-                        <h1 className="text-xl font-bold md:text-2xl">My Team Members</h1>
+                <h1 className="text-xl font-bold md:text-2xl">We All Team Members</h1>
 
-                    </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-7 justify-between gap-6 items-center" >
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-7 gap-6 items-center justify-items-center" >
 
                 {
                     myTeam.map((member, index) => <TeamMembersCard key={index} member={member} ></TeamMembersCard>)

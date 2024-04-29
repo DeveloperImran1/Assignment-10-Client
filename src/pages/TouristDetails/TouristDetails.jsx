@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ScaleLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const TouristDetails = () => {
     const { id } = useParams();
@@ -32,6 +33,9 @@ const TouristDetails = () => {
     const listArray = [`Seasonality ${seasonality || "Every Time"} `, `Total Visito Pere Year ${totalVisitorsPerYear || "Lots"} `, `Travel Time ${travel_time || "Not Fixed"}`, `Location ${location}`]
     return (
         <div>
+             <Helmet>
+                <title>TravelsBook || SpotDetails </title>
+            </Helmet>
             <div>
 
                 <div className="w-full  p-5 border-2 rounded-2xl">

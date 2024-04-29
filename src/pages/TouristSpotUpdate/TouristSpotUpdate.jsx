@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const TouristSpotUpdate = () => {
     const { loading } = useContext(AuthContext);
@@ -80,6 +81,9 @@ const TouristSpotUpdate = () => {
     return (
 
         <div className="w-full p-8  rounded-xl border bg-white   font-sans mx-auto">
+             <Helmet>
+                <title>TravelsBook || PostUpdate </title>
+            </Helmet>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-black mb-3 ">If You Need Update Your Post?</h1>
             <div className="flex flex-col items-center justify-center" >
                 <p className="text-center text-black w-[90%] lg:w-[75%] mt-3 mb-11 " >Stay connected with our vibrant community in the Post Update section. Share your latest travel adventures, tips, and photos from around the globe.</p>

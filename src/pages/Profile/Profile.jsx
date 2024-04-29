@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ScaleLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
     const { user, loading } = useContext(AuthContext);
@@ -24,6 +25,9 @@ const Profile = () => {
     }
     return (
         <div>
+             <Helmet>
+                <title>TravelsBook || Profile </title>
+            </Helmet>
             <div id="profile" className="flex justify-center  items-center relative  ">
 
                 <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-primary hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">

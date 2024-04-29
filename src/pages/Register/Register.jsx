@@ -8,6 +8,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -103,7 +104,10 @@ const Register = () => {
             })
     }
     return (
-        <div className=" flex flex-col-reverse lg:flex-row justify-between overflow-x-hidden gap-[100px]">
+        <div className=" flex flex-col lg:flex-row justify-between overflow-x-hidden gap-[100px]">
+            <Helmet>
+                <title>TravelsBook || Register</title>
+            </Helmet>
             <div className="flex items-center justify-center">
                 <img className="w-[100%]  h-[100%] lg:w-[500px] lg:h-[400px]  " src="https://app.svgator.com/assets/svgator.webapp/log-in-girl.svg" alt="" />
 

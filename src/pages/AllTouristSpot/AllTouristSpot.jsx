@@ -8,6 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { ScaleLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -69,7 +70,9 @@ const AllTouristSpot = () => {
     }
     return (
         <div className="" >
-
+            <Helmet>
+                <title>TravelsBook || All Spots</title>
+            </Helmet>
             <div className=" mb-16 p-7 rounded-3xl relative ">
 
 

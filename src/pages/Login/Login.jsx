@@ -1,16 +1,28 @@
 
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import background from "../../../public/vite.svg"
 // react sweet alert
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
+    const { login, signInGoogle, signInGithub, user, loading } = useContext(AuthContext);
+
     const navigate = useNavigate();
+    const location = useLocation();
+
+    console.log(location)
+    // useEffect( ()=>{
+    //     if(user){
+    //         return navigate(location.state)
+    //     }
+    // } ,[user])
+
 
     const loginModal = () => {
         Swal.fire({
@@ -18,6 +30,13 @@ const Login = () => {
             text: "You Successfully Login !",
             icon: "success"
         });
+        
+        if (location?.state) {
+            navigate(location.state)
+        } else {
+            navigate("/")
+        }
+
 
     };
 
@@ -32,7 +51,6 @@ const Login = () => {
 
 
 
-    const { login, signInGoogle, signInGithub } = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState("");
     const [showPassword, setShowPassword] = useState(true);
 
@@ -50,7 +68,7 @@ const Login = () => {
         }
         login(email, password)
             .then(result => {
-                navigate("/")
+                // navigate("/")
                 loginModal()
             })
             .catch(err => {
@@ -66,7 +84,7 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInGoogle()
             .then(result => {
-                navigate("/")
+                // navigate("/")
                 loginModal()
             })
             .catch(err => console.log(err))
@@ -79,13 +97,16 @@ const Login = () => {
             .then(result => {
                 console.log(result)
                 loginModal()
-                navigate("/")
+                // navigate("/")
                 // return <Navigate to="/"></Navigate>
             })
             .catch(err => console.log(err))
     }
     return (
         <div>
+            <Helmet>
+                <title>TravelsBook || Login</title>
+            </Helmet>
             <div id="login" className="relative  h-[640px] rounded-2xl w-[100%] bg-cover bg-opacity-20 flex items-center justify-center bg-no-repeat" style={{ backgroundImage: "url('https://cdn.svgator.com/images/2024/02/animated-geometric-background.svg')" }} >
 
 

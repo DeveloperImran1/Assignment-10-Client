@@ -12,6 +12,7 @@ import SameCountries from "../pages/Countries/SameCountries";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Profile from "../pages/Profile/Profile";
 import AuthorProfile from "../pages/Profile/AuthorProfile";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -34,21 +35,21 @@ const router = createBrowserRouter([
             },
             {
                 path: "/addTouristSpot",
-                element: <AddTouristSpot></AddTouristSpot>
+                element: <PrivateRoute><AddTouristSpot></AddTouristSpot></PrivateRoute>
             },
             {
                 path: "/allTouristSpot",
                 element: <AllTouristSpot></AllTouristSpot>,
-                loader: ()=> fetch("https://assignment-ten-server-side-indol.vercel.app/allTouristSpot")
+                loader: () => fetch("https://assignment-ten-server-side-indol.vercel.app/allTouristSpot")
             },
             {
                 path: "/myList",
-                element: <MyList></MyList>
+                element: <PrivateRoute> <MyList></MyList></PrivateRoute>
             },
             {
                 path: "/myList/:id",
                 element: <TouristSpotUpdate></TouristSpotUpdate>,
-                loader: ({params}) => fetch(`https://assignment-ten-server-side-indol.vercel.app/touristSpot/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-ten-server-side-indol.vercel.app/touristSpot/${params.id}`)
             },
             {
                 path: "/touristSpot/:id",
@@ -57,11 +58,11 @@ const router = createBrowserRouter([
             {
                 path: "/country/:id",
                 element: <SameCountries></SameCountries>,
-                loader: ({params}) => fetch(`https://assignment-ten-server-side-indol.vercel.app/countriesCollection/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-ten-server-side-indol.vercel.app/countriesCollection/${params.id}`)
             },
             {
                 path: "/userProfile",
-                element: <Profile></Profile>
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path: "/authorProfile",

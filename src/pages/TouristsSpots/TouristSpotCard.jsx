@@ -8,7 +8,7 @@ const TouristSpotCard = ({ tourist }) => {
 
     return (
         <div>
-            <div className="rounded-md shadow-md h-full pb-6 full dark:bg-gray-50 dark:text-gray-800   group transition border-2   border-sky-500 hover:border-[#23BE0A] border-opacity-30 hover:no-underline focus:no-underline">
+            <div className="rounded-md shadow-md h-full pb-6 full dark:bg-gray-50 dark:text-gray-800   group transition border-2   border-sky-500 hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <img src={`${photoURLAuthor || "https://source.unsplash.com/50x50/?portrait"}`} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-300" />
@@ -29,9 +29,9 @@ const TouristSpotCard = ({ tourist }) => {
                     <img src={`${image || "https://source.unsplash.com/301x301/?random"}`} alt="" className="object-cover  object-center w-full h-72 dark:bg-gray-500  p-[18px] rounded-[24px]  transition hover:scale-105" />
                     <div className="absolute bottom-[30px] left-6 z-10">
                         <p className=" text-white font-extrabold text-[26px]" >{tourists_spot_name || "Place name" }</p>
-                        <p className="text-yellow-500 text-[23px] " >{location || "Location" }</p>
+                        <p className="text-yellow-500 font-bold text-[23px] " >{location || "Location" }</p>
                     </div>
-                    <p className="bg-blue-500 text-white py-2 px-3  rounded-[12px] absolute right-6 bottom-[44px] ">{average_cost}$/Person</p>
+                    <p className="bg-[#FF5400] text-white py-2 px-3  rounded-[12px] absolute right-6 bottom-[44px] ">{average_cost}$/Person</p>
                 </div>
                 <div className="p-3">
                     <div className="flex items-center justify-between">
@@ -73,7 +73,7 @@ const TouristSpotCard = ({ tourist }) => {
                     </div>
          
                 </div>
-                <Link to={`/touristSpot/${_id}`} className="relative rounded my-[37px] ml-4 px-3 py-1.5 overflow-hidden group bg-green-500  hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
+                <Link to={`/touristSpot/${_id}`} className="relative rounded my-[37px] ml-4 px-3 py-1.5 overflow-hidden group bg-[#FF5400]  hover:bg-gradient-to-r hover:from-[#FF5400] hover:to-[#FF5400] text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#FF5400] transition-all ease-out duration-300">
                         <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
                         <span className="relative">View Details</span>
                     </Link>

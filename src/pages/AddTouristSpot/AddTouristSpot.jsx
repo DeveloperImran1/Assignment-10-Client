@@ -5,15 +5,16 @@ import { useNavigate } from "react-router-dom";
 // react tostify
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
- // alert message 
- const errorMessage = ()=> toast.error("Empty field is Not Alowed")
+// alert message 
+const errorMessage = () => toast.error("Empty field is Not Alowed")
 
 const AddTouristSpot = () => {
     const { loading, user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-   
+
     // for slider
     const [currentSlider, setCurrentSlider] = useState(0);
     // The slider images array
@@ -33,11 +34,11 @@ const AddTouristSpot = () => {
         return () => clearInterval(intervalId);
     }, [nextSlider, currentSlider]);
 
-   
+
 
     const currentUserEmail = user?.email;
     const currentUserName = user?.displayName;
-   
+
 
     // sweet alert
     const successfullyPost = () => {
@@ -71,10 +72,10 @@ const AddTouristSpot = () => {
 
 
         // Validation form
-        if (!tourists_spot_name.length || !image.length || !average_cost.length || !country_Name.length || !photoURLAuthor.length || !name?.length || !email?.length ) {
+        if (!tourists_spot_name.length || !image.length || !average_cost.length || !country_Name.length || !photoURLAuthor.length || !name?.length || !email?.length) {
             return errorMessage();
         }
-     
+
 
         fetch("https://assignment-ten-server-side-indol.vercel.app/addTouristSpot", {
             method: "POST",
@@ -96,15 +97,17 @@ const AddTouristSpot = () => {
 
     if (loading) {
         return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
-        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
-      </div>
+            <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
+        </div>
 
     }
 
 
     return (
         <div>
-
+            <Helmet>
+                <title>TravelsBook || AddSpots</title>
+            </Helmet>
             <div className="w-full p-8  rounded-xl border bg-white   font-sans mx-auto">
                 <h1 className="text-3xl font-bold text-center text-black mb-3 ">Add Tourist Spot</h1>
                 <p className="text-center text-black" > Wellcome Our Touris spot website. You Can Add More Tourist Spots of few information. Folow the form</p>

@@ -3,7 +3,7 @@ const TeamMembersCard = ({ member }) => {
     console.log(member)
     return (
         <div>
-            <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800 border">
+            <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-white  dark:bg-gray-50 dark:text-gray-800 border">
                 <img src={member[2] || "https://source.unsplash.com/150x150/?portrait?3"} alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
                 <div className="space-y-4 text-center divide-y dark:divide-gray-300">
                     <div className="my-2 space-y-1">
