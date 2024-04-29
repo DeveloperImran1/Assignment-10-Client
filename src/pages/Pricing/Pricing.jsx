@@ -10,8 +10,8 @@ const Pricing = () => {
                 <p className="text-center text-black w-[90%] lg:w-[75%] mb-3 " >Discover Your Dream Destination: Explore our curated packages for unforgettable adventures, cultural immersions, and luxurious getaways. Find your perfect journey at competitive prices today</p>
 
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  " >
-                <div className="relative mx-auto my-20 space-y-8 bg-[#D20062] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px] ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-20 gap-6  " >
+                <div className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#D20062] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px] ">
                     {/* top part  */}
                     <div>
 
@@ -42,7 +42,7 @@ const Pricing = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative mx-auto my-20 space-y-8 bg-[#FF5400] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
+                <div className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#FF5400] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
                     {/* top part  */}
                     <div>
 
@@ -73,7 +73,7 @@ const Pricing = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative mx-auto my-20 space-y-8 bg-[#6AD4DD] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
+                <div className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#6AD4DD] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
                     {/* top part  */}
                     <div>
 
