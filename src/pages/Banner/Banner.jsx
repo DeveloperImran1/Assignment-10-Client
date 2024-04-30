@@ -63,7 +63,7 @@ const Banner = () => {
                 </Swiper>
             </div>
 
-            <div className="flex flex-col items-center justify-center absolute left-[6%] top-[40%] lg:top-[60%] z-50 text-white " >
+            <div className="flex flex-col items-center justify-center absolute left-[35%] lg:left-[6%]  top-[60%]  z-50 text-white " >
                 <h1 className='animate__animated animate__fadeInDownBig  text-xl mg:text-2xl lg:text-3xl font-bold text-center -mb-[40px]' >Wellcome!</h1>
                 <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}
                     className="text-xl md:text-2xl lg:text-3xl font-bold text-center  mb-3 ">
@@ -83,7 +83,7 @@ const Banner = () => {
                     </span>
                 </h1>
 
-                <div className="flex flex-col items-center justify-center" >
+                <div className="hidden lg:flex flex-col items-center justify-center" >
                     <p className="text-center  w-[75%] mt-3 mb-11 " >Our TravelsBooks Website We Provide World Wide Travels Booking And All Support for Tourist. If You Find Most Popular Spots in Bangladesh, Thailand, Malysia, Indonesia, Kambadia, Vietnam Popular Spots Find Now! So Lets Go!</p>
 
                 </div>

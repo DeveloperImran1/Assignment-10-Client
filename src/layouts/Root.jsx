@@ -5,12 +5,12 @@ import Footer from "../pages/Footer/Footer";
 const Root = () => {
     return (
         <div>
-            <div className="max-w-[95%] lg:max-w-[85%] mx-auto ">
-                <div className="fixed z-10 w-[95%] lg:w-[85%]  ">
+            <div className="max-w-[100%] lg:max-w-[85%] mx-auto ">
+                <div className="w-[100%]   ">
                     <NavBar></NavBar>
                 </div>
                 
-                <div className="pt-[140px]">
+                <div className="pt-[40px]">
                 <Outlet></Outlet>
                 </div>
             </div>

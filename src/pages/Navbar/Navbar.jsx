@@ -89,39 +89,39 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="z-50 flex items-center justify-between bg-[#FFFFFF] bg-opacity-50 px-4 py-2 text-black pt-[30px] dark:bg-black dark:text-white font-bold ">
+            <nav className="flex items-center justify-between  px-4 py-2 leading-none dark:text-white pt-[30px] dark:bg-black  font-bold ">
                 {/* <nav className="flex items-center justify-between bg-gradient-to-t from-[#487497] to-[#004e81]  px-4 py-2 text-black pt-[30px]  "> */}
                 <NavLink to="/"  >
-                    <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex justify-center items-center font-semibold text-black transition-all duration-200 hover:scale-110">
+                    <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex justify-center items-center font-semibold leading-none dark:text-white transition-all duration-200 hover:scale-110">
                         <img src="https://i.ibb.co/MNmyYSr/Group-40071-2.png" alt="Logo" />
-                        <h2 className='text-[30px] font-bold hidden lg:flex ' >Travels<span className='text-[#FF5400]' >Book</span></h2>
+                        <h2 className='text-[30px] font-bold hidden lg:flex leading-none dark:text-white' >Travels<span className='text-[#FF5400]' >Book</span></h2>
                     </div>
                 </NavLink>
                 <ul className="hidden items-center justify-between gap-10 lg:flex">
-                    <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'} >
+                    <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'} >
                         <li className="group flex cursor-pointer flex-col">
                             Home<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
 
-                    <NavLink to="/allTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                    <NavLink to="/allTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                         <li className="group flex  cursor-pointer flex-col">
                             All Tourist Spot<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
                     {
                         user && <>
-                            <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                            <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col">
                                     Add Tourist Spot<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
-                            <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                            <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
                                     My List<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
-                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'text-black'}  >
+                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
                                     Profile<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>

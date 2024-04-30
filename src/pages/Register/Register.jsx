@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
-    const { register, signInGoogle, signInGithub, handleUpdateProfile } = useContext(AuthContext);
+    const { register, signInGoogle, signInGithub, handleUpdateProfile, logOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const [errorMessage, setErrorMessage] = useState("");
@@ -27,7 +27,8 @@ const Register = () => {
             text: "You Successfully Registerd !",
             icon: "success"
         });
-        navigate("/")
+        logOut()
+        navigate("/login")
     }
 
     const errorRegister = () => {

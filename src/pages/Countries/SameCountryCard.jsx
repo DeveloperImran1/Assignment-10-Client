@@ -6,9 +6,9 @@ const SameCountryCard = ({ country, index }) => {
     return (
 
         <div className="h-[400px] lg:h-[500px] w-[100%] bg-no-repeat bg-cover rounded-2xl relative " style={{ backgroundImage: ` url(${image})` }} >
-            <div className={` w-[95%] lg:w-[45%] h-[300px] lg:h-[343px] p-[15px] lg:p-[45px] bg-[#FFFFFFCC] rounded-2xl absolute ${index % 2 === 0 ? 'bottom-0 lg:top-[80px] sm:left-[3%] lg:left-[50%]' : ' bottom-0 lg:top-[80px] left-[2%] lg:left-[70px]'}`} >
+            <div className={` w-[95%] lg:w-[45%] h-[300px] lg:h-[343px] p-[15px] lg:p-[20px] bg-[#FFFFFFCC] rounded-2xl absolute overflow-x-hidden ${index % 2 === 0 ? 'bottom-0 lg:top-[80px] sm:left-[3%] lg:left-[50%]' : ' bottom-0 lg:top-[80px] left-[2%] lg:left-[70px]'}`} >
 
-                <div className="flex gap-[18pxpx] items-center justify-between " >
+                <div className="flex gap-[18px] items-center justify-between " >
                     <div className="flex gap-2 justify-center items-center" >
                         <svg width="19.000000" height="19.000000" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <desc>
@@ -44,18 +44,18 @@ const SameCountryCard = ({ country, index }) => {
                 </div>
 
                 <div className="flex justify-between items-center" >
-                    <h1 className="text-[24px] font-extrabold mt-[24px] mb-4 " >{tourists_spot_name}</h1>
-                    <h1 className="text-[24px] font-extrabold mt-[24px] mb-4 " >${average_cost || 0}/person</h1>
+                    <h1 className="text-[15px] lg:text-[24px] font-extrabold mt-1 lg:mt-[10px] mb-2 lg:mb-4 " >{tourists_spot_name}</h1>
+                    <h1 className="text-[15px] lg:text-[24px] font-extrabold mt-2 lg:mt-[10px] mb-2 lg:mb-4 " >${average_cost || 0}/person</h1>
 
                 </div>
                 <div className="flex justify-between items-center" >
-                    <h1 className="text-[16px] font-extrabold mt-[24px] mb-4 " >Location: {location}</h1>
-                    <h1 className="text-[16px] font-extrabold mt-[24px] mb-4 " >Session: {seasonality}</h1>
+                    <h1 className="text-[13px] lg:text-[16px] font-extrabold lg:mt-[10px] mb-2 lg:mb-4 " >Location: {location}</h1>
+                    <h1 className="text-[13px] lg:text-[16px] font-extrabold lg:mt-[10px] mb-2 lg:mb-4 " >Session: {seasonality}</h1>
 
                 </div>
                 <p className="text-[#5A5A5D] w-full lg:w-[80%] " >{shortDescription}</p>
                 <Link to={`/touristSpot/${_id}`} >
-                    <button className="bg-[#FF5400] text-white rounded-[8px] py-3 px-6 my-4" >View Details</button>
+                    <button className="bg-[#FF5400] text-white rounded-[8px] py-3 px-6 mt-3" >View Details</button>
                 </Link>
             </div>
         </div>
