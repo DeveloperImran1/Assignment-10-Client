@@ -109,12 +109,12 @@ const AllTouristSpot = () => {
 
                             <Link onClick={highToLow} >
                                 <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
-                                >High</li>
+                                >High Budget</li>
                             </Link>
 
                             <Link onClick={lowToHigh} >
                                 <li className={`rounded-lg font-medium bg-[#1313130D] text-black p-2 text-center ${open ? 'opacity-100 duration-500' : 'opacity-0 duration-150'} hover:bg-[#59C6D2] hover:text-[#FFFFFF]`}
-                                >Low</li>
+                                >Low Budget</li>
                             </Link>
 
 
