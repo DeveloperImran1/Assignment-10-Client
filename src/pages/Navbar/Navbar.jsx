@@ -49,8 +49,8 @@ const Navbar = () => {
 
     const successfullyLogOut = () => {
         Swal.fire({
-            title: "Good job!",
-            text: "You Successfully Log Out !",
+            title: "Logged Out Successfully!",
+            text: "Goodbye for Now !",
             icon: "success"
         });
         navigate("/login")
@@ -89,7 +89,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="flex items-center justify-between bg-[#FFFFFF] px-4 py-2 text-black pt-[30px] dark:bg-black dark:text-white ">
+            <nav className="z-50 flex items-center justify-between bg-[#FFFFFF] bg-opacity-50 px-4 py-2 text-black pt-[30px] dark:bg-black dark:text-white font-bold ">
                 {/* <nav className="flex items-center justify-between bg-gradient-to-t from-[#487497] to-[#004e81]  px-4 py-2 text-black pt-[30px]  "> */}
                 <NavLink to="/"  >
                     <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex justify-center items-center font-semibold text-black transition-all duration-200 hover:scale-110">

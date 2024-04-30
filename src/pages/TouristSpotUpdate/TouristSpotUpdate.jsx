@@ -10,7 +10,7 @@ const TouristSpotUpdate = () => {
     const spotData = useLoaderData();
     const { _id, name, email, image, tourists_spot_name, average_cost, seasonality, totalVisitorsPerYear, country_Name, location, shortDescription, travel_time, photoURLAuthor } = spotData;
 
-    console.log(_id)
+   
 
 
     // sweet alert
@@ -35,8 +35,8 @@ const TouristSpotUpdate = () => {
     const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
-        // const U_name = form.name.value;
-        // const U_email = form.email.value;
+        const U_name = name;
+        const U_email = email;
         const U_image = form.image.value;
         const U_tourists_spot_name = form.tourists_spot_name.value;
         const U_average_cost = form.average_cost.value;
@@ -47,7 +47,7 @@ const TouristSpotUpdate = () => {
         const U_shortDescription = form.shortDescription.value;
         const U_travel_time = form.travel_time.value;
 
-        const UpdateInfo = { U_image, U_tourists_spot_name, U_average_cost, U_seasonality, U_totalVisitorsPerYear, U_country_Name, U_location, U_shortDescription, U_travel_time };
+        const UpdateInfo = { U_image, U_name, U_email, U_tourists_spot_name, U_average_cost, U_seasonality, U_totalVisitorsPerYear, U_country_Name, U_location, U_shortDescription, U_travel_time };
         console.log(UpdateInfo)
 
         fetch(`https://assignment-ten-server-side-indol.vercel.app/touristSpot/${_id}`, {

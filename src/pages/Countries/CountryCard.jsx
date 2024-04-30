@@ -8,7 +8,12 @@ const CountryCard = ({ country, index }) => {
         <div>
             <Link to={`/country/${country_Name}`} >
             <div className="h-[400px] lg:h-[500px] w-[100%] bg-no-repeat bg-cover rounded-2xl relative " style={{ backgroundImage: ` url(${image})` }} >
-                <div className={` w-[95%] lg:w-[45%] h-[300px] lg:h-[343px] p-[15px] lg:p-[45px] bg-[#FFFFFFCC] rounded-2xl absolute ${index % 2 === 0 ? 'bottom-0 lg:top-[80px] sm:left-[3%] lg:left-[50%]' : ' bottom-0 lg:top-[80px] left-[2%] lg:left-[70px]'}`} >
+                <div  
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-bottom"
+                  data-aos-delay="50"
+                  data-aos-duration="1000"
+                  className={` w-[95%] lg:w-[45%] h-[300px] lg:h-[343px] p-[15px] lg:p-[45px] bg-[#FFFFFFCC] rounded-2xl absolute ${index % 2 === 0 ? 'bottom-0 lg:top-[80px] sm:left-[3%] lg:left-[50%]' : ' bottom-0 lg:top-[80px] left-[2%] lg:left-[70px]'}`} >
 
                     <div className="flex gap-[18pxpx] items-center justify-between " >
                         <div className="flex gap-2 justify-center items-center" >

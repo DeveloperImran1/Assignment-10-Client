@@ -78,17 +78,17 @@ const MyList = () => {
             <Helmet>
                 <title>TravelsBook || MyList </title>
             </Helmet>
-            <h1 className="text-xl mg:text-2xl lg:text-3xl font-bold text-center text-black mb-3 ">My added List</h1>
+            <h1 className="text-xl mg:text-2xl lg:text-3xl font-bold text-center leading-none dark:text-gray-600 mb-3 ">My added List</h1>
 
             <div className="flex flex-col items-center justify-center" >
-                <p className="text-center text-black w-[75%] mt-3 mb-11 " >In This Section You see All Post Informaion . You Added This post. If you nedd Post Update or Delete. You do Click in Update and Delete Button.</p>
+                <p className="text-center leading-none dark:text-gray-600 w-[75%] mt-3 mb-11 " >In This Section You see All Post Informaion . You Added This post. If you nedd Post Update or Delete. You do Click in Update and Delete Button.</p>
 
             </div>
 
             <div className="overflow-x-auto border w-full mx-auto bg-[#1313180D] rounded-xl border-black  ">
                 <table className="min-w-full text-[16px] font-semibold ">
                     <thead className="dark:bg-gray-300 bg-slate-600 mt-10">
-                        <tr className="text-left text-[#131318]">
+                        <tr className="text-left leading-none dark:text-gray-600">
                             <th></th>
                             <th className="p-3">Tourist </th>
                             <th className="p-3">Time</th>

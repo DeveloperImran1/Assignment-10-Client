@@ -80,8 +80,14 @@ const AllTouristSpot = () => {
                     style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}>
 
                     <div className="drop-shadow-lg text-white text-center rounded-3xl flex flex-col items-center">
-                        <h1 className="text-xl lg:text-3xl font-semibold mb-3">{sliders[currentSlider].title}</h1>
-                        <p className="text-sm md:text-base lg:text-lg w-[70%] mt-[40px] ">{sliders[currentSlider].des}</p>
+                        <h1 
+                        data-aos="flip-left"
+                        className="text-xl lg:text-3xl font-semibold mb-3">{sliders[currentSlider].title}</h1>
+                        <p 
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1000"
+                        className="text-sm md:text-base lg:text-lg w-[70%] mt-[40px] ">{sliders[currentSlider].des}</p>
                     </div>
                 </div>
 

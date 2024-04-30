@@ -5,13 +5,22 @@ const Pricing = () => {
     const listArray3 = ['All Place seeing and plaing free ', ' Led by expert instructors.', 'cultural events unique to the destination.'];
     return (
         <>
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-black mb-3  mt-24">Pricing</h1>
+            <h1  data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+             className="text-xl md:text-2xl lg:text-3xl font-bold text-center leading-none dark:text-gray-600 mb-3  mt-24">Pricing</h1>
             <div className="flex flex-col items-center justify-center" >
-                <p className="text-center text-black w-[90%] lg:w-[75%] mb-3 " >Discover Your Dream Destination: Explore our curated packages for unforgettable adventures, cultural immersions, and luxurious getaways. Find your perfect journey at competitive prices today</p>
+                <p
+                 data-aos="fade-down"
+                 data-aos-easing="linear"
+                 data-aos-duration="1000"
+                className="text-center leading-none dark:text-gray-600 w-[90%] lg:w-[75%] mb-3 " >Discover Your Dream Destination: Explore our curated packages for unforgettable adventures, cultural immersions, and luxurious getaways. Find your perfect journey at competitive prices today</p>
 
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-20 gap-6  " >
-                <div className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#D20062] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px] ">
+                <div 
+                data-aos="fade-right"
+                className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#D20062] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px] ">
                     {/* top part  */}
                     <div>
 
@@ -42,7 +51,8 @@ const Pricing = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#FF5400] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
+                <div data-aos="fade-top"
+                 className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#FF5400] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
                     {/* top part  */}
                     <div>
 
@@ -73,7 +83,8 @@ const Pricing = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#6AD4DD] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
+                <div data-aos="fade-left"
+                className="relative mx-auto lg:my-20 space-y-4 lg:space-y-8 bg-[#6AD4DD] p-8 shadow-[0px_0px_30px_2px_rgba(100,100,111,0.1)] dark:bg-[#18181B] md:w-[300px] rounded-[16px]">
                     {/* top part  */}
                     <div>
 

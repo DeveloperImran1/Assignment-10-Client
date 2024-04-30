@@ -5,10 +5,15 @@ const AllTouristSpotCard = ({ spot }) => {
     // console.log(spot)
     return (
         <div>
-        
+
 
             <div className=" mx-auto my-6 max-w-[350px]  bg-white font-sans shadow-lg dark:bg-[#18181B]    group transition border-2 rounded-xl  border-sky-500 hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">
-                <div className="flex items-center justify-between gap-10 px-4 py-4">
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    className="flex items-center justify-between gap-10 px-4 py-4">
                     {/* Avatar image  */}
                     <div className="flex items-center gap-3">
                         <img width={100} height={100} className="h-16 w-16 rounded-full bg-black/40" src={photoURLAuthor || "https://source.unsplash.com/100x100/?portrait"} alt="card navigate ui" />
@@ -25,22 +30,37 @@ const AllTouristSpotCard = ({ spot }) => {
                     </div>
                 </div>
                 {/* Post Image */}
-                <div className="flex flex-col  gap-1">
-                    <div className="w-full "><img width={400} height={400}  src={image || "https://i.ibb.co/dPSQVRJ/404.jpg"} alt="card navigate ui" className="h-[350px] p-[18px] rounded-[24px] w-full transition hover:scale-105"/></div>
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    className="flex flex-col  gap-1">
+                    <div className="w-full "><img width={400} height={400} src={image || "https://i.ibb.co/dPSQVRJ/404.jpg"} alt="card navigate ui" className="h-[350px] p-[18px] rounded-[24px] w-full transition hover:scale-105" /></div>
 
                 </div>
                 {/* Post content */}
-                <div className="mt-3 space-y-2 px-4">
-                    <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90">{tourists_spot_name || "Place Not Found" }</h2>
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    className="mt-3 space-y-2 px-4">
+                    <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90">{tourists_spot_name || "Place Not Found"}</h2>
                     <div className="flex justify-between items-center text-md text-gray-700 dark:text-white/50" >
-                        <p><span  className=" text-black">Average Cost:</span> {average_cost} </p>
-                        <p><span  className=" text-black">Seasonality:</span> {seasonality || ""} </p>
+                        <p><span className=" text-black">Average Cost:</span> {average_cost} </p>
+                        <p><span className=" text-black">Seasonality:</span> {seasonality || ""} </p>
                     </div>
                     <p className="text-gray-700 dark:text-white/50" ><span className=" text-black" >Total Visitor Per Year:</span> {totalVisitorsPerYear || 868} </p>
                     <h2 className="text-sm text-gray-500 dark:text-white/50">{shortDescription.slice(0, 60)} ...{' '}<Link to={`/touristSpot/${_id}`} className="cursor-pointer text-md font-bold text-[#FF5400]">View Details</Link></h2>
                 </div>
                 {/* icons */}
-                <div className="mt-4 flex justify-between px-4 pb-4">
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    className="mt-4 flex justify-between px-4 pb-4">
                     <div className="flex items-center gap-2">
                         <svg className="w-6 fill-[#1E293B] dark:fill-white/90" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g strokeWidth="0"></g><g id="navigateui" strokeLinecap="round" strokeLinejoin="round"></g><g id="navigateui"><path fillRule="evenodd" clipRule="evenodd" d="M5.62436 4.4241C3.96537 5.18243 2.75 6.98614 2.75 9.13701C2.75 11.3344 3.64922 13.0281 4.93829 14.4797C6.00072 15.676 7.28684 16.6675 8.54113 17.6345C8.83904 17.8642 9.13515 18.0925 9.42605 18.3218C9.95208 18.7365 10.4213 19.1004 10.8736 19.3647C11.3261 19.6292 11.6904 19.7499 12 19.7499C12.3096 19.7499 12.6739 19.6292 13.1264 19.3647C13.5787 19.1004 14.0479 18.7365 14.574 18.3218C14.8649 18.0925 15.161 17.8642 15.4589 17.6345C16.7132 16.6675 17.9993 15.676 19.0617 14.4797C20.3508 13.0281 21.25 11.3344 21.25 9.13701C21.25 6.98614 20.0346 5.18243 18.3756 4.4241C16.9023 3.75065 14.9662 3.85585 13.0725 5.51217L14.5302 6.9694C14.8232 7.26224 14.8233 7.73711 14.5304 8.03006C14.2376 8.323 13.7627 8.32309 13.4698 8.03025L11.4698 6.03097L11.4596 6.02065C9.40166 3.88249 7.23607 3.68739 5.62436 4.4241ZM12 4.45873C9.68795 2.39015 7.09896 2.10078 5.00076 3.05987C2.78471 4.07283 1.25 6.42494 1.25 9.13701C1.25 11.8025 2.3605 13.836 3.81672 15.4757C4.98287 16.7888 6.41022 17.8879 7.67083 18.8585C7.95659 19.0785 8.23378 19.292 8.49742 19.4998C9.00965 19.9036 9.55954 20.3342 10.1168 20.6598C10.6739 20.9853 11.3096 21.2499 12 21.2499C12.6904 21.2499 13.3261 20.9853 13.8832 20.6598C14.4405 20.3342 14.9903 19.9036 15.5026 19.4998C15.7662 19.292 16.0434 19.0785 16.3292 18.8585C17.5898 17.8879 19.0171 16.7888 20.1833 15.4757C21.6395 13.836 22.75 11.8025 22.75 9.13701C22.75 6.42494 21.2153 4.07283 18.9992 3.05987C16.901 2.10078 14.3121 2.39015 12 4.45873Z"></path></g></svg>
                         <h2 className="text-lg font-semibold text-slate-800 dark:text-white/90">10k</h2>

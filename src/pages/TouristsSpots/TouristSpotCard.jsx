@@ -9,7 +9,10 @@ const TouristSpotCard = ({ tourist }) => {
     return (
         <div>
             <div className="rounded-md shadow-md h-full pb-6 full dark:bg-gray-50 dark:text-gray-800   group transition border-2   border-sky-500 hover:border-[#FF5400] border-opacity-30 hover:no-underline focus:no-underline">
-                <div className="flex items-center justify-between p-3">
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <img src={`${photoURLAuthor || "https://source.unsplash.com/50x50/?portrait"}`} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-300" />
                         <div className="-space-y-1">
@@ -25,15 +28,21 @@ const TouristSpotCard = ({ tourist }) => {
                         </svg>
                     </button>
                 </div>
-                <div className="relative" >
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    className="relative" >
                     <img src={`${image || "https://source.unsplash.com/301x301/?random"}`} alt="" className="object-cover  object-center w-full h-72 dark:bg-gray-500  p-[18px] rounded-[24px]  transition hover:scale-105" />
-                    <div className="absolute bottom-[30px] left-6 z-10">
-                        <p className=" text-white font-extrabold text-[26px]" >{tourists_spot_name || "Place name" }</p>
-                        <p className="text-yellow-500 font-bold text-[23px] " >{location || "Location" }</p>
+                    <div className="absolute bottom-[30px] left-6 ">
+                        <p className=" text-[#F0F0F0] font-extrabold text-[26px]" >{tourists_spot_name || "Place name"}</p>
+                        <p className="text-[#F0F0F0] text-[18px] " >{location || "Location"}</p>
                     </div>
-                    <p className="bg-[#FF5400] text-white py-2 px-3  rounded-[12px] absolute right-6 bottom-[44px] ">{average_cost}$/Person</p>
+                    <p className="bg-[#FF5400] text-white py-2 px-3  rounded-[12px] absolute right-6 top-[44px] bg-opacity-80 ">{average_cost}$/Person</p>
                 </div>
-                <div className="p-3">
+                <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    className="p-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                             <button type="button" title="Like post" className="flex items-center justify-center">
@@ -58,7 +67,10 @@ const TouristSpotCard = ({ tourist }) => {
                             </svg>
                         </button>
                     </div>
-                    <div className="flex flex-wrap items-center pt-3 pb-1">
+                    <div
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom"
+                        className="flex flex-wrap items-center pt-3 pb-1">
                         <div className="flex items-center space-x-2">
                             <div className="flex -space-x-1">
                                 <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-100" src="https://source.unsplash.com/40x40/?portrait?1" />
@@ -71,12 +83,15 @@ const TouristSpotCard = ({ tourist }) => {
                             </span>
                         </div>
                     </div>
-         
+
                 </div>
-                <Link to={`/touristSpot/${_id}`} className="relative rounded my-[37px] ml-4 px-3 py-1.5 overflow-hidden group bg-[#FF5400]  hover:bg-gradient-to-r hover:from-[#FF5400] hover:to-[#FF5400] text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#FF5400] transition-all ease-out duration-300">
-                        <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-                        <span className="relative">View Details</span>
-                    </Link>
+                <Link
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    to={`/touristSpot/${_id}`} className="relative rounded my-[37px] ml-4 px-3 py-1.5 overflow-hidden group bg-[#FF5400]  hover:bg-gradient-to-r hover:from-[#FF5400] hover:to-[#FF5400] text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#FF5400] transition-all ease-out duration-300">
+                    <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                    <span className="relative">View Details</span>
+                </Link>
             </div>
         </div>
     );

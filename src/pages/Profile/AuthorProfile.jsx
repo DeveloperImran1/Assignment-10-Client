@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ScaleLoader } from "react-spinners";
 import TeamMembersCard from "./TeamMembersCard";
 import { Helmet } from "react-helmet-async";
+import 'react-tooltip/dist/react-tooltip.css'
 
 const AuthorProfile = () => {
 
@@ -41,11 +42,18 @@ const AuthorProfile = () => {
                     {/* profile image & bg  */}
                     <div className="relative">
                         <img className="w-full h-[140px] rounded-2xl bg-gray-500" src="https://i.ibb.co/ChCGg3Z/404452958-2443244652516191-5414449848808334082-n.jpg" alt="card navigate ui" />
+
                         <img className="w-[100px] h-[100px] absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-gray-400 border border-white" src="https://i.ibb.co/zGd68Hw/409190995-2451672608340062-5052422953989411988-n.jpg" alt="card navigate ui" />
                     </div>
                     {/* profile name & role */}
                     <div className="pt-8 text-center space-y-1">
-                        <h1 className="text-xl md:text-2xl">Md Imran</h1>
+                        <a
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Hey Broo.!"
+                            data-tooltip-place="top" >
+
+                            <h1 className="text-xl md:text-2xl">Md Imran</h1>
+                        </a>
                         <p className="text-gray-400 text-sm">h9066588@gmail.com</p>
                     </div>
                     <div className="pt-3 text-center space-y-1">

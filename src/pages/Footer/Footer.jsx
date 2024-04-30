@@ -6,19 +6,19 @@ import { FaLocationDot } from "react-icons/fa6";
 const Footer = () => {
     return (
 
-        <footer className="flex flex-col text-[#5A5A5D] bg-[#1313180D] mt-[96px] pb-[40px]">
+        <footer className="flex flex-col   lg:justify-between text-[#5A5A5D] bg-[#1313180D] mt-[96px] pb-[40px]">
             <div className="flex flex-col items-start justify-around gap-5 bg-sky-50 p-10 py-10 md:flex-row md:gap-0 md:items-center">
                 <aside className="">
                     <NavLink to="/authorProfile"  >
-                        <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex flex-row lg:flex-col justify-center items-center font-semibold text-black transition-all duration-200 hover:scale-110">
+                        <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex flex-row lg:flex-col justify-center items-center font-semibold leading-none dark:text-gray-200 transition-all duration-200 hover:scale-110">
                             <img src="https://i.ibb.co/MNmyYSr/Group-40071-2.png" alt="Logo" />
-                            <h2 className='text-[30px] font-bold flex ' >Travels<span className='text-[#FF5400]' >Book</span></h2>
+                            <h2 className='text-[30px] font-bold flex leading-none dark:text-gray-600 ' >Travels<span className='text-[#FF5400]' >Book</span></h2>
                         </div>
                     </NavLink>
                 </aside>
                 <nav className="text-lg">
                     <ul className="space-y-3">
-                        <span className="flex gap-[75px]" >
+                        <span className="flex  gap-[75px]" >
                             <li>
                                 <Link to="/" className="cursor-pointer hover:underline">Home</Link>
                             </li>

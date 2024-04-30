@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
 import { Helmet } from "react-helmet-async";
+import { Typewriter } from "react-simple-typewriter";
 
 // alert message 
 const errorMessage = () => toast.error("Empty field is Not Alowed")
@@ -109,7 +110,22 @@ const AddTouristSpot = () => {
                 <title>TravelsBook || AddSpots</title>
             </Helmet>
             <div className="w-full p-8  rounded-xl border bg-white   font-sans mx-auto">
-                <h1 className="text-3xl font-bold text-center text-black mb-3 ">Add Tourist Spot</h1>
+                <h1 className="text-3xl font-bold text-center text-black mb-3 ">Add { }
+                    <span style={{ fontWeight: 'bold' }} className='text-[#FF5400]' >
+                        {/* Style will be inherited from the parent element */}
+                        <Typewriter
+                            words={['Tourist', "Spot"]}
+                            loop={5}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+
+                        />
+                    </span>
+                </h1>
+
                 <p className="text-center text-black" > Wellcome Our Touris spot website. You Can Add More Tourist Spots of few information. Folow the form</p>
 
 
@@ -135,16 +151,31 @@ const AddTouristSpot = () => {
 
                         <input name="tourists_spot_name" placeholder="Tourists Spot Name" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
                         <input name="image" placeholder="Image" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
-                        <div className="flex gap-3 justify-between" >
+                        <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            className="flex gap-3 justify-between" >
                             <input name="average_cost" placeholder="Average Cost" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="number" />
                             <input name="travel_time" placeholder="Travel Time 7 Days" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="number" />
 
                         </div>
-                        <div className="flex  gap-3 justify-between" >
+                        <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            className="flex  gap-3 justify-between" >
                             <input name="totalVisitorsPerYear" placeholder="Total Visitor Per Year" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
                             <input name="location" placeholder="Location" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
                         </div>
-                        <div className="flex gap-3 justify-between" >
+                        <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            className="flex gap-3 justify-between" >
 
                             <select name="country_Name" className="select select-info w-full max-w-xs  ">
                                 <option disabled selected>Conutry Name</option>
@@ -162,15 +193,30 @@ const AddTouristSpot = () => {
                                 <option className="mb-2" >Winter</option>
                             </select>
                         </div>
-                        <div className="flex gap-3 justify-between" >
+                        <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            className="flex gap-3 justify-between" >
 
                             <input name="name" value={currentUserName} placeholder="Name" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
                             <input name="email" value={currentUserEmail} placeholder="Email" className="rounded-lg border w-full border-[#1B8EF8] bg-transparent px-4 py-2 text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" type="text" />
 
                         </div>
-                        <textarea name="shortDescription" placeholder="Short Description" className="w-full textarea textarea-info" ></textarea>
+                        <textarea
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            name="shortDescription" placeholder="Short Description" className="w-full textarea textarea-info" ></textarea>
 
-                        <button className="text-lg rounded-xl relative p-[10px] block w-full bg-indigo-600 text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500 z-50 group">
+                        <button
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            className="text-lg rounded-xl relative p-[10px] block w-full bg-indigo-600 text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500 z-50 group">
                             Add Now
                             <span className="absolute opacity-0 group-hover:opacity-100 duration-100 group-hover:duration-1000 ease-out flex justify-center inset-0 items-center z-10 text-white">
                                 Let&apos;s go
