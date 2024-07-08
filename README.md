@@ -16,6 +16,8 @@ Visit the live site url at[TravelsBook Live] (https://assignment-10-10bbc.web.ap
 - **User Authentication:** Navbar includes registration, login, and logout functionality.
 - **Profile Page:** Profile route shows user's name and image URL.
 
+## Used Technology and Framework: 
+HTML, CSS, Tailwind CSS, Javascript, ReactJS, Firebase, NodeJS, ExpressJS, MongoDB
 
 ## How to start this application:
  1. **Clone this repository:**
